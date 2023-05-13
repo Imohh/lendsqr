@@ -7,6 +7,9 @@ import users from '../images/dashboard/glyph1.png'
 import activeUsers from '../images/dashboard/glyph2.png'
 import loanUsers from '../images/dashboard/glyph3.png'
 import savingsUsers from '../images/dashboard/glyph4.png'
+import viewDetail from '../images/dashboard/view-detail.png'
+import activateUser from '../images/dashboard/activate-user.png'
+import blacklistUser from '../images/dashboard/blacklist-user.png'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
 import Detail from './Detail'
@@ -17,7 +20,8 @@ export interface User{
   phoneNumber: number,
   orgName: string,
   userName: string,
-  createdAt: string
+  createdAt: string,
+  lastActiveDate: string
 }
 
 const Dashboard = () => {
@@ -26,6 +30,11 @@ const Dashboard = () => {
 	const [data, setData] = useState<User[]>([])
 	const [error, setError] = useState({})
 	const [show, setShow] = useState<boolean>(false)
+	const [searchTerm, setSearchTerm] = useState<string>('');
+	const [currentPage, setCurrentPage] = useState<number>(1);
+  	const [totalPages, setTotalPages] = useState<number>(0);
+
+  const itemsPerPage = 10; // Number of items to display per page
 
   useEffect(() => {
     fetchData();
@@ -41,9 +50,26 @@ const Dashboard = () => {
     }
   };
 
+  // format time to readable format
   const formatTime = (time: string) => {
     const date = new Date(time);
-    return date.toLocaleString(); // Adjust the format as per your requirements
+    return date.toLocaleString();
+  };
+
+  const getStatus = (lastActiveDate: string): string => {
+  const currentDate = new Date();
+  const providedDate = new Date(lastActiveDate);
+
+  // Calculate the difference in years
+  const yearDiff = currentDate.getFullYear() - providedDate.getFullYear();
+
+	  if (yearDiff > 10) {
+	    return 'Pending';
+	  } else if (providedDate.getFullYear() > 2023) {
+	    return 'Active';
+	  } else {
+	    return 'Unknown';
+	  }
   };
 
   // const hideSidebar = () => {
@@ -51,43 +77,76 @@ const Dashboard = () => {
   // }
 
 
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
+
+  const filteredUsers = data.filter((user) =>
+    user.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.orgName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+ // const handlePageChange = (page: number) => {
+ //    setCurrentPage(page);
+ //  };
+
+ //  const renderPagination = () => {
+ //    const pages = Array.from(Array(totalPages).keys()); // Generate an array of page numbers
+
+ //    return (
+ //      <div>
+ //        {pages.map((page) => (
+ //          <button key={page} onClick={() => handlePageChange(page + 1)}>
+ //            {page + 1}
+ //          </button>
+ //        ))}
+ //      </div>
+ //    );
+ //  };
+
+
+
 
 	return (
 		<>
-			<Navbar />
+			<Navbar onSearch={handleSearch}/>
 		   	<div id="wrapper">
 		      <Sidebar />
 
-		      
+		      {/*<input type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />*/}
+
+
+
 		      <div id="page-content-wrapper">
-		         <div className="container-fluid xyz">
+		         <div className="container xyz">
 		            <div className="row">
 		               <div className="col-lg-12">
-		               		<p>users</p>
+		               		<p className="users-text">users</p>
 		               </div>
 
-		               <div className="col-lg-3">
+		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={users} />
 		               			<p className="first-text">users</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
-		               <div className="col-lg-3">
+		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={activeUsers} />
 		               			<p className="first-text">active users</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
-		               <div className="col-lg-3">
+		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={loanUsers} />
 		               			<p className="first-text">users with loans</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
-		               <div className="col-lg-3">
+		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={savingsUsers} />
 		               			<p className="first-text">users with savings</p>
@@ -99,7 +158,7 @@ const Dashboard = () => {
 		      </div>
 
 
-		      <section className="table-section">
+		      <section className="table-section table-responsive">
 			    <table className="table">
 				  <thead>
 				      <th scope="col">organization</th>
@@ -111,24 +170,50 @@ const Dashboard = () => {
 				      <th></th>
 				  </thead>
 
-				  {data.map((item, index) => {
+				  {filteredUsers.map((item, index) => {
         			return (
-					  <tbody>
+					  <tbody key={item.id}>
 					    <tr >
 					      <td>{item.orgName}</td>
 					      <td>{item.userName}</td>
-					  	  <Link data-item-id={item.id} to={`/products/${item.id}`} key={item.id}>
-					      	<td>{item.email}</td>
-					      </Link>
+					      <td>{item.email}</td>
 					      <td>{item.phoneNumber}</td>
 					      <td>{formatTime(item.createdAt)}</td>
-					      <td>blacklisted</td>
-					      <td><div className="test"></div></td>				      
+					      <td><span className="badge badge-pill badge-primary">{getStatus(item.lastActiveDate)}</span></td>
+					      <td>
+
+					      	<div id="container">
+							    <div id="menu-wrap">
+							      <input type="checkbox" className="toggler" />
+							      <div className="dots">
+							        <div></div>
+							      </div>
+							      <div className="menu">
+							        <div>
+							          <ul>
+							            <li>
+								            <Link data-item-id={item.id} to={`/dashboard/users/${item.id}`} key={item.id}>
+							            		<a href="#" className="link">
+									            	<img src={viewDetail} />view details
+									            </a>
+								            </Link>
+									    </li>
+							            <li><a href="#" className="link"><img src={blacklistUser} />blacklist user</a></li>
+							            <li><a href="#" className="link"><img src={activateUser} />activate user</a></li>
+							          </ul>
+							        </div>
+							      </div>
+							    </div>
+							</div>
+
+					      </td>				      
 					  	</tr>
 				  	  </tbody>
 				  )
 		          })}
 				</table>
+
+				{/*{renderPagination()}*/}
 			  </section>
 
 

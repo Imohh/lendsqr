@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../Font/WorkSans.ttf') format('truetype');
+}
 $color_1: #213F7D;
 $color_2: #545F7D;
 $color_3: #39CDCC;
@@ -25,7 +29,7 @@ $color_4: #fff;
 		height: 55px;
 		left: 836px;
 		top: 215px;
-		// font-family: 'Avenir Next';
+		font-family: 'Avenir Next';
 		font-style: normal;
 		font-weight: 700;
 		font-size: 40px;

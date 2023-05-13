@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/sidebar.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../images/logo.svg'
 import switchOrganizations from '../images/sidebar/switch-organization.png'
 import users from '../images/sidebar/users.png'
@@ -30,75 +31,90 @@ const Sidebar = () => {
 		      {/*<!-- Sidebar -->*/}
 		      <div id="sidebar-wrapper">
 		         <ul className="sidebar-nav nav-pills nav-stacked" id="menu">
-		         	<div>
-		         		<a href="#"><span className="fa-stack fa-lg pull-left"><img src={switchOrganizations} /></span> switch organizations</a>
-		         		{/*<label><img src={switchOrganizations} />switch organizations</label>*/}
-		         	</div>
+		         	<li className="switch">
+		         		<div className="dropdown">
+						  <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <img src={switchOrganizations} />
+						    switch organizations
+						  </a>
+
+						  <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						    <a className="dropdown-item" href="#">Action</a>
+						    <a className="dropdown-item" href="#">Another action</a>
+						    <a className="dropdown-item" href="#">Something else here</a>
+						  </div>
+						</div>
+					</li>
+
+
+		         		{/*<a href="#"><span className="pull-left"><img src={switchOrganizations} /></span> switch organizations</a>
+		         		<label><img src={switchOrganizations} />switch organizations</label>*/}
+		         	
 
 			        <label>customers</label>
 		            <li className="active">
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={users} /></span> users</a>
+		               <a href="#"><span className="pull-left"><img src={users} /></span> users</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={guarantors} /></span>guarantors</a>
+		               <a href="#"><span className="pull-left"><img src={guarantors} /></span>guarantors</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={loans} /></span>loans</a>
+		               <a href="#"><span className="pull-left"><img src={loans} /></span>loans</a>
 		            </li>
 		            <li>
-		               <a href="#"> <span className="fa-stack fa-lg pull-left"><img src={decisionModels} /></span>decision models</a>
+		               <a href="#"> <span className="pull-left"><img src={decisionModels} /></span>decision models</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={savings} /></span>savings</a>
+		               <a href="#"><span className="pull-left"><img src={savings} /></span>savings</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={loanRequests} /></span>loan requests</a>
+		               <a href="#"><span className="pull-left"><img src={loanRequests} /></span>loan requests</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={whitelist} /></span>whitelist</a>
+		               <a href="#"><span className="pull-left"><img src={whitelist} /></span>whitelist</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={karma} /></span>karma</a>
+		               <a href="#"><span className="pull-left"><img src={karma} /></span>karma</a>
 		            </li>
 
 			        <label>businesses</label>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={organization} /></span> organization</a>
+		               <a href="#"><span className="pull-left"><img src={organization} /></span> organization</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={loanRequests} /></span>loan products</a>
+		               <a href="#"><span className="pull-left"><img src={loanRequests} /></span>loan products</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={savingsProducts} /></span>savings product</a>
+		               <a href="#"><span className="pull-left"><img src={savingsProducts} /></span>savings product</a>
 		            </li>
 		            <li>
-		               <a href="#"> <span className="fa-stack fa-lg pull-left"><img src={feesAndCharges} /></span>fees and charges</a>
+		               <a href="#"> <span className="pull-left"><img src={feesAndCharges} /></span>fees and charges</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={transactions} /></span>transactions</a>
+		               <a href="#"><span className="pull-left"><img src={transactions} /></span>transactions</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={services} /></span>services</a>
+		               <a href="#"><span className="pull-left"><img src={services} /></span>services</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={serviceAccount} /></span>service account</a>
+		               <a href="#"><span className="pull-left"><img src={serviceAccount} /></span>service account</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={settlements} /></span>settlements</a>
+		               <a href="#"><span className="pull-left"><img src={settlements} /></span>settlements</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={reports} /></span>reports</a>
+		               <a href="#"><span className="pull-left"><img src={reports} /></span>reports</a>
 		            </li>
 
 			        <label>settings</label>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={preferences} /></span>preferences</a>
+		               <a href="#"><span className="pull-left"><img src={preferences} /></span>preferences</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={feesAndPricing} /></span>fees and pricing</a>
+		               <a href="#"><span className="pull-left"><img src={feesAndPricing} /></span>fees and pricing</a>
 		            </li>
 		            <li>
-		               <a href="#"><span className="fa-stack fa-lg pull-left"><img src={auditLogs} /></span>audit logs</a>
+		               <a href="#"><span className="pull-left"><img src={auditLogs} /></span>audit logs</a>
 		            </li>
 		        </ul>
 		      </div>
