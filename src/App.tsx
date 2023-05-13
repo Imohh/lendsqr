@@ -12,7 +12,8 @@ function App() {
         <Route path="/dashboard/:slug" element={<Dashboard />} />
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="dashboard/users/detail/:id" element={<Detail />} />
+        {/*<Route path="dashboard/users/detail/:id" element={<Detail />} />*/}
+        <Route path="products/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
