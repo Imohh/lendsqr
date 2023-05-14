@@ -1,4 +1,5 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/navbar.scss'
 import logo from '../images/logo.svg'
 import search from '../images/dashboard/search.png'
@@ -87,7 +88,19 @@ const Navbar: React.FC<SearchProps> = ({ onSearch }) => {
       <ul className="navbar-nav mr-auto">
 		<li className="nav-item"><a href="">docs</a></li>
 	    <li className="nav-item"><img src={notification} /></li>
-		<li className="nav-item"><span><img src={image} /></span> ayodeji</li>
+		<li className="nav-item">
+			<div className="dropdown">
+			  <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    <span><img src={image} /></span> ayodeji
+			  </a>
+
+			  <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				<a className="dropdown-item" href="#">Action</a>
+				<a className="dropdown-item" href="#">Another action</a>
+			    <a className="dropdown-item" href="#">Something else here</a>
+			  </div>
+			</div>
+		</li>
 	  </ul>
     </div>
   </div>

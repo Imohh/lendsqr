@@ -56,26 +56,45 @@ const Dashboard = () => {
     return date.toLocaleString();
   };
 
-  const getStatus = (lastActiveDate: string): string => {
+  const getStatus = (date: string): string => {
   const currentDate = new Date();
-  const providedDate = new Date(lastActiveDate);
+  const year = currentDate.getFullYear();
+  const tenYearsAgo = year - 10;
+  const year2000 = 2000;
+  const year2022 = 2022;
 
-  // Calculate the difference in years
-  const yearDiff = currentDate.getFullYear() - providedDate.getFullYear();
+  const parsedDate = new Date(date);
 
-	  if (yearDiff > 10) {
-	    return 'Pending';
-	  } else if (providedDate.getFullYear() > 2023) {
-	    return 'Active';
-	  } else {
-	    return 'Unknown';
-	  }
-  };
+  if (parsedDate.getFullYear() < year2000) {
+    return 'blacklisted';
+  } else if (parsedDate.getFullYear() >= year2022) {
+    return 'active';
+  } else if (parsedDate.getFullYear() <= tenYearsAgo) {
+    return 'pending';
+  }
 
-  // const hideSidebar = () => {
-  // 	setShow(true)
+  return 'unknown';
+};
+
+  // status conditional styling 
+  // const statusColor = status === 'Active' ? '#39CD62' : status === 'Pending' ? '#E9B200' : status === 'Inactive' ? '#545F7D' : status === 'Blacklisted' ? '#E4033B';
+  // let textColor: string;
+
+  // if (status === 'Inactive') {
+  //   textColor = '#545F7D';
+  // } else if (status === 'Active') {
+  //   textColor = '#39CD62';
+  // } else if (status === 'Blacklisted') {
+  //   textColor = '#E4033B';
+  // } else if (status === 'Pending') {
+  //   textColor = '#E9B200';
+  // } else {
+  //   textColor = 'inherit'; // Fallback color if no condition is met
   // }
 
+  // const textStyle = {
+  //   color: textColor,
+  // };
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -113,8 +132,6 @@ const Dashboard = () => {
 			<Navbar onSearch={handleSearch}/>
 		   	<div id="wrapper">
 		      <Sidebar />
-
-		      {/*<input type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />*/}
 
 
 
@@ -179,7 +196,7 @@ const Dashboard = () => {
 					      <td>{item.email}</td>
 					      <td>{item.phoneNumber}</td>
 					      <td>{formatTime(item.createdAt)}</td>
-					      <td><span className="badge badge-pill badge-primary">{getStatus(item.lastActiveDate)}</span></td>
+					      <td><span className="badge badge-pill badge-info">{getStatus(item.lastActiveDate)}</span></td>
 					      <td>
 
 					      	<div id="container">

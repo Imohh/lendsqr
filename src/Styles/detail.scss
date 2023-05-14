@@ -1,0 +1,219 @@
+$color_1: #213F7D;
+$color_2: #545F7D;
+$color_3: #E4033B;
+$color_4: #39CDCC;
+$color_5: rgba(0, 0, 0, 0.8);
+$font-family_1: 'Work Sans';
+
+@font-face {
+	font-family: 'Work Sans';
+	src: url('../Font/WorkSans.ttf') format('truetype');
+}
+.wrap-content {
+	padding-left: 50px;
+	margin-left: 50px;
+	padding-right: 50px;
+	background: #fbfbfb;
+}
+.top-section {
+	margin: 0 !important;
+	padding: 0 !important;
+	.user-details-text {
+		font-family: $font-family_1;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 28px;
+		color: $color_1;
+	}
+	.back-text {
+		a {
+			font-family: $font-family_1;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			color: $color_2;
+			text-decoration: none;
+		}
+	}
+}
+.sub-top {
+	margin-bottom: 3%;
+	margin-top: 5%;
+}
+.detail-ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	button {
+		font-family: $font-family_1;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 16px;
+		border: 1px solid #E4033B;
+		border-radius: 8px;
+		text-align: center;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		width: 170px;
+		height: 40px;
+		color: $color_3;
+	}
+}
+.detail-li {
+	float: right;
+}
+.activate-button {
+	border: 1px solid #39CDCC !important;
+	color: $color_4 !important;
+}
+.detail-intro {
+	padding: 30px 30px 0 30px;
+	background: #FFFFFF;
+	border: 1px solid rgba(33, 63, 125, 0.06);
+	box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 4px;
+	.image {
+		.detail-name {
+			padding: 30px;
+			margin-left: 2%;
+			.detail-fullname {
+				font-family: $font-family_1;
+				font-style: normal;
+				font-weight: 500;
+				font-size: 22px;
+				line-height: 26px;
+				color: $color_1;
+				text-transform: capitalize;
+			}
+			.detail-tag {
+				font-family: $font-family_1;
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 16px;
+				color: $color_2;
+			}
+		}
+		float: left;
+		width: 35%;
+		img {
+			float: left;
+			border-radius: 50%;
+			margin-right: 5%;
+		}
+	}
+	.user-tier {
+		float: left;
+		width: 15%;
+		align-items: center;
+		padding: 40px;
+		border-left: 1px solid #E5E5E5;
+		border-right: 1px solid #E5E5E5;
+		p {
+			text-align: center;
+			font-family: $font-family_1;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 16px;
+			color: $color_2;
+		}
+	}
+}
+.image-container {
+	display: flex;
+	justify-content: center;
+	img {
+		margin: 0 5px;
+	}
+}
+.detail-nav {
+	.nav-item {
+		padding-right: 60px;
+		.active {
+			font-family: $font-family_1;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+			text-transform: capitalize;
+			border-radius: 0;
+			color: $color_4 !important;
+			background: transparent;
+			border-bottom: 2px solid #39CDCC;
+		}
+		.nav-link {
+			// font-family: 'SF Compact Text';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+			color: $color_5;
+			text-transform: capitalize;
+		}
+	}
+}
+.tab-content {
+	background: #FFFFFF;
+	border: 1px solid rgba(33, 63, 125, 0.06);
+	box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 4px;
+	margin: 3% 0;
+	padding: 30px;
+}
+.general-details {
+	border-bottom: 1px solid #E5E5E5;
+	padding-top: 20px;
+}
+.general-nav {
+	.nav-item {
+		padding-right: 10%;
+		.nav-link {
+			// font-family: 'SF Compact Text';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 19px;
+			text-align: center;
+			color: $color_5;
+			text-transform: capitalize;
+		}
+	}
+}
+.heading-text {
+	font-family: $font-family_1;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	color: $color_1;
+	text-transform: capitalize;
+}
+.user-details {
+	margin-bottom: 2%;
+	p {
+		&:first-child {
+			font-family: $font-family_1;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 14px;
+			text-transform: uppercase;
+			color: $color_2;
+		}
+		&:nth-child(2) {
+			font-family: $font-family_1;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 19px;
+			color: $color_2;
+		}
+	}
+}

@@ -8,6 +8,7 @@ $color_3: #213F7D;
 
 /* table section */
 #wrapper {
+  background: #fbfbfb;
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -47,6 +48,16 @@ $color_3: #213F7D;
   padding: 15px;
   width: 100%;
   overflow-x: hidden;
+}
+
+#page-content-wrapper .users-text {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: capitalize;
+  color: #213F7D;
 }
 
 
