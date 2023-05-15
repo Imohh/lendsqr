@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link} from 'react-router-dom';
 import '../styles/dashboard.scss'
 import logo from '../images/logo.svg'
@@ -57,24 +58,34 @@ const Dashboard = () => {
   };
 
   const getStatus = (date: string): string => {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const tenYearsAgo = year - 10;
-  const year2000 = 2000;
-  const year2022 = 2022;
+	  const currentDate = new Date();
+	  const year = currentDate.getFullYear();
+	  const tenYearsAgo = year - 10;
+	  const year2000 = 2000;
+	  const year2022 = 2022;
 
-  const parsedDate = new Date(date);
+	  const parsedDate = new Date(date);
 
-  if (parsedDate.getFullYear() < year2000) {
-    return 'blacklisted';
-  } else if (parsedDate.getFullYear() >= year2022) {
-    return 'active';
-  } else if (parsedDate.getFullYear() <= tenYearsAgo) {
-    return 'pending';
-  }
+	  if (parsedDate.getFullYear() < year2000) {
+	    return 'blacklisted';
+	  } else if (parsedDate.getFullYear() >= year2022) {
+	    return 'active';
+	  } else if (parsedDate.getFullYear() <= tenYearsAgo) {
+	    return 'pending';
+	  }
 
-  return 'unknown';
-};
+	  return 'unknown';
+
+	    if ('active') {
+	      return 'red';
+	    } else if ('inactive') {
+	      return 'blue';
+	    } else if ('pending') {
+	      return 'green';
+	    }
+	    return 'black'; // Default color if status doesn't match any condition
+
+	};
 
   // status conditional styling 
   // const statusColor = status === 'Active' ? '#39CD62' : status === 'Pending' ? '#E9B200' : status === 'Inactive' ? '#545F7D' : status === 'Blacklisted' ? '#E4033B';
@@ -124,12 +135,26 @@ const Dashboard = () => {
  //    );
  //  };
 
+	const shouldShowSearch = true;
+
+
+	  
 
 
 
 	return (
-		<>
-			<Navbar onSearch={handleSearch}/>
+		<HelmetProvider>
+
+			<Helmet>
+		        <title>Lendsqr | Dashboard</title>
+		        <meta name="description" content="Empowering the smartest lenders" />
+			    <meta property="og:title" content="Lendsqr Dashboard" />
+	    	</Helmet>
+
+	    	
+			<Navbar onSearch={handleSearch}
+				showSearch={shouldShowSearch}
+			/>
 		   	<div id="wrapper">
 		      <Sidebar />
 
@@ -175,7 +200,7 @@ const Dashboard = () => {
 		      </div>
 
 
-		      <section className="table-section table-responsive">
+		      <section className="table-section">
 			    <table className="table">
 				  <thead>
 				      <th scope="col">organization</th>
@@ -196,7 +221,7 @@ const Dashboard = () => {
 					      <td>{item.email}</td>
 					      <td>{item.phoneNumber}</td>
 					      <td>{formatTime(item.createdAt)}</td>
-					      <td><span className="badge badge-pill badge-info">{getStatus(item.lastActiveDate)}</span></td>
+					      <td><span className="badge badge-pill">{getStatus(item.lastActiveDate)}</span></td>
 					      <td>
 
 					      	<div id="container">
@@ -240,7 +265,7 @@ const Dashboard = () => {
 		      {/*<!-- /#page-content-wrapper -->*/}
 		   	</div>
 
-		</>
+		</HelmetProvider>
 	)
 }
 

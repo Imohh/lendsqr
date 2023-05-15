@@ -9,11 +9,12 @@ import image from '../images/dashboard/image.png'
 
 interface SearchProps {
   onSearch: (term: string) => void;
+  showSearch: boolean;
 }
 
 
 
-const Navbar: React.FC<SearchProps> = ({ onSearch }) => {
+const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		onSearch(event.target.value);
@@ -24,87 +25,57 @@ const Navbar: React.FC<SearchProps> = ({ onSearch }) => {
 
 
 
-			{/*<nav className="navbar navbar-default no-margin">
-
-		      <div className="navbar-header fixed-brand">
-		         <a className="navbar-brand" href="#"><img src={logo} /></a>
-		      </div>
-		      
-		      <div className="wrap">
-				<div className="search">
-				    <input 
-				    	type="text" 
-				    	className="searchTerm" 
-				    	placeholder="Search for anything"
-				    	onChange={handleChange}
-				    />
-				    <button type="submit" className="searchButton">
-				      <img src={search} />
-				    </button>
-				</div>
-			  </div>
-		      <div className="nav-right">
-			      <ul>
-			      	<li><a href="">docs</a></li>
-			      	<li><img src={notification} /></li>
-			      	<li><span><img src={image} /></span> ayodeji</li>
-			      </ul>
-		      </div>
-		   	</nav>*/}
-
-
-
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#"><img src={logo} /></a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+		  <a className="navbar-brand" href="#"><img src={logo} /></a>
+		  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span className="navbar-toggler-icon"></span>
+		  </button>
 
 
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+		  <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-		
+				
 
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-        <div className="wrap">
-			<div className="search">
-			    <input 
-				    type="text" 
-				   	className="searchTerm" 
-				   	placeholder="Search for anything"
-				   	onChange={handleChange}
-				/>
-				<button type="submit" className="searchButton">
-			    	<img src={search} />
-			    </button>
-			</div>
-		</div>
+		    <ul className="navbar-nav mr-auto">
+		      <li className="nav-item active">
+		      {showSearch && 
+		        <div className="wrap">
+					<div className="search">
+					    <input 
+						    type="text" 
+						   	className="searchTerm" 
+						   	placeholder="Search for anything"
+						   	onChange={handleChange}
+						/>
+						<button type="submit" className="searchButton">
+					    	<img src={search} />
+					    </button>
+					</div>
+				</div>
+			  }
+		      </li>
+		    </ul>
+		    <div className="nav-right form-inline my-2 my-lg-0">
+		      <ul className="navbar-nav mr-auto">
+				<li className="nav-item docs"><a href="">docs</a></li>
+			    <li className="nav-item notification"><img src={notification} /></li>
 
-      </li>
-    </ul>
-    <div className="nav-right form-inline my-2 my-lg-0">
-      <ul className="navbar-nav mr-auto">
-		<li className="nav-item"><a href="">docs</a></li>
-	    <li className="nav-item"><img src={notification} /></li>
-		<li className="nav-item">
-			<div className="dropdown">
-			  <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    <span><img src={image} /></span> ayodeji
-			  </a>
+				<li className="dropdown nav-item nav-name">
+					<a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    <span><img src={image} /></span> ayodeji
+					</a>
 
-			  <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				<a className="dropdown-item" href="#">Action</a>
-				<a className="dropdown-item" href="#">Another action</a>
-			    <a className="dropdown-item" href="#">Something else here</a>
-			  </div>
-			</div>
-		</li>
-	  </ul>
-    </div>
-  </div>
-</nav>
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a className="dropdown-item" href="#">Action</a></li>
+						<li><a className="dropdown-item" href="#">Another action</a></li>
+					    <li><a className="dropdown-item" href="#">Something else here</a></li>
+					</ul>
+				</li>
+			  </ul>
+		    </div>
+		  </div>
+		</nav>
 
 
 

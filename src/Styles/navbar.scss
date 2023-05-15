@@ -2,6 +2,10 @@
   font-family: 'Work Sans';
   src: url('../Font/WorkSans.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Roboto';
+  src: url('../Font/Roboto.ttf') format('truetype');
+}
 $color_1: #9DBFAF;
 $color_2: #00B4CC;
 $color_3: #fff;
@@ -64,9 +68,17 @@ $color_4: #000;
       margin: 0;
       padding: 0;
       overflow: hidden;
+      .docs {
+        margin-top: 3%
+      }
+      .notification {
+        margin-top: 3%;
+        cursor: pointer
+      }
+
       li {
         display: inline;
-        padding-left: 10px;
+        padding-left: 30px;
         float: left;
         span {
           img {
@@ -76,6 +88,37 @@ $color_4: #000;
       }
     }
   }
+
+.docs a {
+  // font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+  color: #213F7D;
+  padding-top: 40px;
+}
+
+.nav-name a {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #213F7D;
+  text-decoration: none;
+}
+
+.dropdown {
+  z-index: 222;
+}
+.dropdown-menu {
+  z-index: 222;
+}
+
+
 }/*media query closing tag*/
 
 

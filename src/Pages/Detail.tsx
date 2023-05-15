@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
@@ -59,12 +60,13 @@ function Detail () {
 
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User | null>(null);
-  const [loan, setLoan] = useState(false)
-  const [bank, setBank] = useState(false)
-  const [documents, setDocuments] = useState(false)
+  const [loan, setLoan] = useState(false);
+  const [bank, setBank] = useState(false);
+  const [documents, setDocuments] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
 
-
+  const shouldShowSearch = false;
 
   useEffect(() => {
     // Fetch users data from the API based on the ID
@@ -75,6 +77,11 @@ function Detail () {
       	localStorage.setItem('apiData', JSON.stringify(data));
       });
   }, [id]);
+
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
 
 	const storedDataString = localStorage.getItem('apiData');
@@ -89,12 +96,22 @@ function Detail () {
     return <div>Loading...</div>;
   }
 
+  const naira = '\u20A6';
 
 
 	return (
-		<>
+		<HelmetProvider>
 
-			{/*<Navbar showSearch={false} />*/}
+			<Helmet>
+        <title>Lendsqr | Detail</title>
+        <meta name="description" content="Empowering the smartest lenders" />
+	      <meta property="og:title" content="Lendsqr Details" />
+      </Helmet>
+
+			<Navbar 
+				onSearch={handleSearch}
+				showSearch={shouldShowSearch} 
+			/>
 		   	<div id="wrapper" className="wrap-content">
 		      <Sidebar />
 
@@ -103,19 +120,19 @@ function Detail () {
 		      	<div className="container">
 		      		<div className="row">
 		      			<div className="col-lg-12 sub-top">
-		      				<p className="back-text"><a href=""><img src={backArrow} />back to users</a></p>
+		      				<p className="back-text"><a href="/dashboard"><img src={backArrow} className="back-arrow" />back to users</a></p>
 		      			</div>
 
-			      			<div className="col-lg-6 user-details">
-					      			<ul className="detail-ul">
+			      			<div className="col-lg-6 user-details detail-ul-padding">
+					      			<ul className="detail-ul ">
 					      				<li><p className="user-details-text">user details</p></li>
 					      			</ul>
 			      			</div>
 
-			      			<div className="col-lg-6">
-				      			<ul className="detail-ul">
-				      				<li className="detail-li"><button>blacklist user</button></li>
-				      				<li className="detail-li"><button className="activate-button">activate user</button></li>
+			      			<div className="col-lg-6 detail-ul-paddings">
+				      			<ul className="detail-ul ">
+				      				<li className="detail-li detail-button"><button>blacklist user</button></li>
+				      				<li className="detail-li detail-button"><button className="activate-button">activate user</button></li>
 				      			</ul>
 			      			</div>
 
@@ -144,7 +161,8 @@ function Detail () {
 		      				</div>
 
 		      				<div className="account">
-		      					account balance
+			      				<p className="balance">{naira}{user.accountBalance}</p>
+			      				<p className="bank-name">289302846/providus bank</p>
 		      				</div>
 		      			</div>
 
@@ -152,7 +170,7 @@ function Detail () {
 		      				<ul className="nav nav-pills mb-3 detail-nav" id="pills-tab" role="tablist">
 									  <li className="nav-item">
 									    <a 
-									    	className="nav-link active" 
+									    	className="nav-link active detail-li" 
 									    	id="pills-general-tab" data-toggle="pill" 
 									    	href="#pills-general" role="tab" 
 									    	aria-controls="pills-general" 
@@ -162,7 +180,7 @@ function Detail () {
 									  </li>
 									  <li className="nav-item">
 									    <a 
-									    	className="nav-link" 
+									    	className="nav-link detail-li" 
 									    	id="pills-documents-tab" 
 									    	data-toggle="pill" 
 									    	href="#pills-documents" 
@@ -174,7 +192,7 @@ function Detail () {
 									  </li>
 									  <li className="nav-item">
 									    <a 
-									    	className="nav-link" 
+									    	className="nav-link detail-li" 
 									    	id="pills-bank-tab" 
 									    	data-toggle="pill" 
 									    	href="#pills-bank" 
@@ -186,7 +204,7 @@ function Detail () {
 									  </li>
 									  <li className="nav-item">
 									    <a 
-									    	className="nav-link" 
+									    	className="nav-link detail-li" 
 									    	id="pills-loans-tab" 
 									    	data-toggle="pill" 
 									    	href="#pills-loans" 
@@ -198,7 +216,7 @@ function Detail () {
 									  </li>
 									  <li className="nav-item">
 									    <a 
-									    	className="nav-link" 
+									    	className="nav-link detail-li" 
 									    	id="pills-savings-tab" 
 									    	data-toggle="pill" 
 									    	href="#pills-savings" 
@@ -239,19 +257,19 @@ function Detail () {
 					  		<div className="personal-info">
 						  		<p className="heading-text">personal information</p>
 					  			<ul className="nav nav-pills mb-3 general-nav" id="pills-tab" role="tablist">
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>full name</p>
 					  					<p>{user.profile.firstName} {user.profile.lastName}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>phone number</p>
 					  					<p>{user.profile.phoneNumber}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-email-padding">
 					  					<p>email address</p>
 					  					<p>{user.email}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 						  				<p>bvn</p>
 						  				<p>{user.profile.bvn}</p>
 						  			</li>
@@ -269,31 +287,34 @@ function Detail () {
 					  		<div className="personal-info">
 						  		<p className="heading-text">education and employment</p>
 					  			<ul className="nav nav-pills mb-3 general-nav" id="pills-tab" role="tablist">
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>level of education</p>
 					  					<p>{user.education.level} {user.profile.lastName}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>employment status</p>
 					  					<p>{user.education.employmentStatus}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>sector of employment</p>
 					  					<p>{user.education.sector}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 						  				<p>duration of employment</p>
 						  				<p>{user.education.duration}</p>
 						  			</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>office email</p>
 					  					<p>{user.education.officeEmail}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				
+					  			</ul>
+					  			<ul className="nav nav-pills mb-3 general-nav" id="pills-tab" role="tablist">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>monthly income</p>
 					  					<p>{user.education.monthlyIncome}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>loan repayment</p>
 					  					<p>{user.education.loanRepayment}</p>
 					  				</li>
@@ -304,38 +325,38 @@ function Detail () {
 					  		<div className="personal-info">
 						  		<p className="heading-text">socials</p>
 					  			<ul className="nav nav-pills mb-3 general-nav" id="pills-tab" role="tablist">
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>twitter</p>
 					  					<p>{user.socials.twitter}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>facebook</p>
 					  					<p>{user.socials.facebook}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>instagram</p>
 					  					<p>{user.socials.instagram}</p>
 					  				</li>
 					  			</ul>
 								</div>
 					    </section>
-					    <section className="general-details">
+					    <section className="last-general-details">
 					  		<div className="personal-info">
 						  		<p className="heading-text">guarantor</p>
 					  			<ul className="nav nav-pills mb-3 general-nav" id="pills-tab" role="tablist">
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>full name</p>
 					  					<p>{user.guarantor.firstName} {user.guarantor.lastName}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>phone number</p>
 					  					<p>{user.guarantor.phoneNumber}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>email address</p>
 					  					<p>{user.guarantor.gender}</p>
 					  				</li>
-					  				<li className="nav-item user-details">
+					  				<li className="nav-item user-details user-details-padding">
 					  					<p>relationship</p>
 					  					<p>{user.guarantor.address}</p>
 					  				</li>
@@ -378,7 +399,7 @@ function Detail () {
 
 			</div>
 
-		</>
+		</HelmetProvider>
 	)
 }
 
