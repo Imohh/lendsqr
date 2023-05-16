@@ -109,6 +109,9 @@ const Dashboard = () => {
 	  };
 
 
+	  // hide amd show side bar
+	  
+
 
 	return (
 		<HelmetProvider>
@@ -124,7 +127,7 @@ const Dashboard = () => {
 				showSearch={shouldShowSearch}
 			/>
 		   	<div id="wrapper">
-		      <Sidebar />
+		      {/*<Sidebar />*/}
 
 
 

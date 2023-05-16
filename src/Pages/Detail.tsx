@@ -64,6 +64,7 @@ function Detail () {
   const [bank, setBank] = useState(false);
   const [documents, setDocuments] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
 
 
   const shouldShowSearch = false;
@@ -99,6 +100,14 @@ function Detail () {
   const naira = '\u20A6';
 
 
+
+  // hide amd show side bar
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
+
+
 	return (
 		<HelmetProvider>
 
@@ -113,13 +122,15 @@ function Detail () {
 				showSearch={shouldShowSearch} 
 			/>
 		   	<div id="wrapper" className="wrap-content">
-		      <Sidebar />
+
+		      {sidebarVisible && <Sidebar/>}
 
 
 		      <div className="top-section">
 		      	<div className="container">
 		      		<div className="row">
 		      			<div className="col-lg-12 sub-top">
+			      			<button className="sidebar-button" style={{float: "right"}} onClick={toggleSidebar}>Sidebar</button>
 		      				<p className="back-text"><a href="/dashboard"><img src={backArrow} className="back-arrow" />back to users</a></p>
 		      			</div>
 

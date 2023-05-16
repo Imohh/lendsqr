@@ -22,6 +22,9 @@ import reports from '../images/sidebar/reports.png'
 import preferences from '../images/sidebar/preferences.png'
 import feesAndPricing from '../images/sidebar/fees-and-pricing.png'
 import auditLogs from '../images/sidebar/audit-logs.png'
+import logout from '../images/sidebar/logout.png'
+
+
 
 const Sidebar = () => {
 	return (
@@ -29,7 +32,7 @@ const Sidebar = () => {
 
 
 		      {/*<!-- Sidebar -->*/}
-		      <div id="sidebar-wrapper">
+		      	<div id="sidebar-wrapper">
 		         <ul className="sidebar-nav nav-pills nav-stacked" id="menu">
 		         	<li className="switch">
 		         		<div className="dropdown">
@@ -116,14 +119,17 @@ const Sidebar = () => {
 		            <li>
 		               <a href="#"><span className="pull-left"><img src={auditLogs} /></span>audit logs</a>
 		            </li>
+
+		         	<li className="logout">
+		         		<a href="#"><span className="pull-left"><img src={logout} /></span>logout</a>
+		         	</li>
+
 		        </ul>
+
+
 		      </div>
 
 		      
-
-
-
-
 
 
 
