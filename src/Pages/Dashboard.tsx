@@ -33,10 +33,11 @@ const Dashboard = () => {
 	const [error, setError] = useState({})
 	const [show, setShow] = useState<boolean>(false)
 	const [searchTerm, setSearchTerm] = useState<string>('');
-	const [currentPage, setCurrentPage] = useState<number>(1);
-  	const [totalPages, setTotalPages] = useState<number>(0);
+  	const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
+  	const [currentPage, setCurrentPage] = useState<number>(1);
+	const [totalPages, setTotalPages] = useState<number>(0);
+	const itemsPerPage = 10; // Number of items to display per page
 
-  const itemsPerPage = 10; // Number of items to display per page
 
   useEffect(() => {
     // fetchData();
@@ -47,17 +48,34 @@ const Dashboard = () => {
 
   }, []);
 
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
+  //     const jsonData = await response.json();
+  //     setData(jsonData);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log('Error fetching data:', error);
+  //     setLoading(false)
+  //   }
+  // };
+
+
   const fetchData = async () => {
-    try {
-      const response = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
-      const jsonData = await response.json();
-      setData(jsonData);
-      setLoading(false);
-    } catch (error) {
-      console.log('Error fetching data:', error);
-      setLoading(false)
-    }
-  };
+  try {
+    const response = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
+    const jsonData = await response.json();
+    const totalItems = jsonData.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    setData(jsonData);
+    setTotalPages(totalPages);
+    setLoading(false);
+  } catch (error) {
+    console.log('Error fetching data:', error);
+    setLoading(false);
+  }
+};
+
 
   // format time to readable format
   const formatTime = (time: string) => {
@@ -110,7 +128,54 @@ const Dashboard = () => {
 
 
 	  // hide amd show side bar
-	  
+	  const toggleSidebar = () => {
+	    setSidebarVisible(!sidebarVisible);
+	  };
+
+
+
+	  // pagination
+	  const paginateData = (data: User[]): User[] => {
+		const startIndex = (currentPage - 1) * itemsPerPage;
+		const endIndex = startIndex + itemsPerPage;
+		return data.slice(startIndex, endIndex);
+	  };
+
+	  const handlePreviousPage = () => {
+		setCurrentPage((prevPage) => prevPage - 1);
+	  };
+
+	  const handleNextPage = () => {
+		setCurrentPage((prevPage) => prevPage + 1);
+	  };
+
+
+	  const generatePageNumbers = (currentPage: number, totalPages: number): number[] => {
+	  const visiblePageCount = 3; // Number of page numbers to show on each side of the current page
+	  const pageNumbers: number[] = [];
+
+	  // Add page numbers before the current page
+	  for (let i = currentPage - visiblePageCount; i < currentPage; i++) {
+	    if (i > 0) {
+	      pageNumbers.push(i);
+	    }
+	  }
+
+	  // Add the current page
+	  pageNumbers.push(currentPage);
+
+	  // Add page numbers after the current page
+	  for (let i = currentPage + 1; i <= currentPage + visiblePageCount; i++) {
+	    if (i <= totalPages) {
+	      pageNumbers.push(i);
+	    }
+	  }
+
+	  return pageNumbers;
+	};
+
+	const pageNumbers = generatePageNumbers(currentPage, totalPages);
+
 
 
 	return (
@@ -127,7 +192,7 @@ const Dashboard = () => {
 				showSearch={shouldShowSearch}
 			/>
 		   	<div id="wrapper">
-		      {/*<Sidebar />*/}
+		      {sidebarVisible && <Sidebar/>}
 
 
 
@@ -186,7 +251,7 @@ const Dashboard = () => {
 					      <th></th>
 					  </thead>
 
-					  {filteredUsers.map((item, index) => {
+					  {paginateData(filteredUsers).map((item, index) => {
 	        			return (
 						  <tbody key={item.id}>
 						    <tr >
@@ -231,6 +296,47 @@ const Dashboard = () => {
 					)}	
 			  	  </section>
 
+
+			  	  {/*<div className="pagination">
+			      	<button
+			        	onClick={handlePreviousPage}
+			        	disabled={currentPage === 1}
+				    >
+			        	Previous
+			      	</button>
+			      	<span>{currentPage}</span>
+			      	<button
+			        	onClick={handleNextPage}
+			        	disabled={currentPage === totalPages}
+			      	>
+			        	Next
+			      	</button>
+			      </div>*/}
+
+			      <div className="pagination">
+				    <button
+				        onClick={handlePreviousPage}
+				        disabled={currentPage === 1}
+				    >
+			        	Previous
+			      </button>
+			      {pageNumbers.map((pageNumber) => (
+			        <button
+			          key={pageNumber}
+			          onClick={() => setCurrentPage(pageNumber)}
+			          className={pageNumber === currentPage ? "active" : ""}
+			        >
+			          {pageNumber}
+			        </button>
+			      ))}
+
+			      <button
+			        onClick={handleNextPage}
+			        disabled={currentPage === totalPages}
+			      >
+			        Next
+			      </button>
+			    </div>
 
 
 
