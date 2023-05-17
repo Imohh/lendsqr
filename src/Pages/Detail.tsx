@@ -60,9 +60,6 @@ function Detail () {
 
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User | null>(null);
-  const [loan, setLoan] = useState(false);
-  const [bank, setBank] = useState(false);
-  const [documents, setDocuments] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
 
@@ -131,7 +128,7 @@ function Detail () {
 		      		<div className="row">
 		      			<div className="col-lg-12 sub-top">
 			      			<button className="sidebar-button" style={{float: "right"}} onClick={toggleSidebar}>Sidebar</button>
-		      				<p className="back-text"><a href="/dashboard"><img src={backArrow} className="back-arrow" />back to users</a></p>
+		      				<p className="back-text"><a href="/dashboard"><img src={backArrow} className="back-arrow" alt="back arrow"/>back to users</a></p>
 		      			</div>
 
 			      			<div className="col-lg-6 user-details detail-ul-padding">
@@ -156,7 +153,7 @@ function Detail () {
 		      		<div className="row">
 		      			<div className="col-lg-12">
 		      				<div className="image">
-		      					<img src={user.profile.avatar} />
+		      					<img src={user.profile.avatar} alt="user avatar"/>
 		      					<div className="detail-name">
 			      					<p className="detail-fullname">{user.profile.firstName} {user.profile.lastName}</p>
 			      					<p className="detail-tag">{user.accountNumber}</p>
@@ -165,9 +162,9 @@ function Detail () {
 		      				<div className="user-tier">
 		      					<p>user's tier</p>
 		      					<div className="image-container">
-				      				<img src={star} />
-				      				<img src={stars} />
-				      				<img src={stars} />
+				      				<img src={star} alt="star"/>
+				      				<img src={stars} alt="star"/>
+				      				<img src={stars} alt="star"/>
 				      			</div>
 		      				</div>
 

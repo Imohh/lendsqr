@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/sidebar.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../images/logo.svg'
 import switchOrganizations from '../images/sidebar/switch-organization.png'
 import users from '../images/sidebar/users.png'
 import guarantors from '../images/sidebar/guarantors.png'

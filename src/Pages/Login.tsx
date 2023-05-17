@@ -94,10 +94,10 @@ function Login() {
 
             <div className="col-lg-6 col-md-6 col-sm-12 first-section">
               <div className="logo-top">
-                <img src={logo} />
+                <img src={logo} alt="logo"/>
               </div>
 
-              <img className="login-image" src={loginImage}/>
+              <img className="login-image" src={loginImage} alt="login image"/>
             </div>
 
 

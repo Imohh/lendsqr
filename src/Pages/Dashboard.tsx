@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link} from 'react-router-dom';
 import '../styles/dashboard.scss'
-import logo from '../images/logo.svg'
 import users from '../images/dashboard/glyph1.png'
 import activeUsers from '../images/dashboard/glyph2.png'
 import loanUsers from '../images/dashboard/glyph3.png'
@@ -13,7 +12,7 @@ import activateUser from '../images/dashboard/activate-user.png'
 import blacklistUser from '../images/dashboard/blacklist-user.png'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
-import Detail from './Detail'
+// import Detail from './Detail'
 
 export interface User{
 	id: number,
@@ -26,12 +25,10 @@ export interface User{
 }
 
 const Dashboard = () => {
-	const url = "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
+	// const url = "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
 
 	const [data, setData] = useState<User[]>([])
 	const [loading, setLoading] = useState<boolean>(true);
-	const [error, setError] = useState({})
-	const [show, setShow] = useState<boolean>(false)
 	const [searchTerm, setSearchTerm] = useState<string>('');
   	const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
   	const [currentPage, setCurrentPage] = useState<number>(1);
@@ -118,11 +115,6 @@ const Dashboard = () => {
 	    return 'black'; // Default color if status doesn't match any condition
 	  };
 
-
-	  // hide amd show side bar
-	  const toggleSidebar = () => {
-	    setSidebarVisible(!sidebarVisible);
-	  };
 
 
 
@@ -239,28 +231,28 @@ const Dashboard = () => {
 
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
-		               			<img src={users} />
+		               			<img src={users} alt="users"/>
 		               			<p className="first-text">users</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
-		               			<img src={activeUsers} />
+		               			<img src={activeUsers} alt="active users" />
 		               			<p className="first-text">active users</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
-		               			<img src={loanUsers} />
+		               			<img src={loanUsers} alt="loan users" />
 		               			<p className="first-text">users with loans</p>
 		               			<p className="total">2,453</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
-		               			<img src={savingsUsers} />
+		               			<img src={savingsUsers} alt="savings users"/>
 		               			<p className="first-text">users with savings</p>
 		               			<p className="total">2,453</p>
 		               		</div>
@@ -309,12 +301,12 @@ const Dashboard = () => {
 								            <li>
 									            <Link data-item-id={item.id} to={`/dashboard/users/${item.id}`} key={item.id}>
 								            		<a href="#" className="link">
-										            	<img src={viewDetail} />view details
+										            	<img src={viewDetail} alt="view detail"/>view details
 										            </a>
 									            </Link>
 										    </li>
-								            <li><a href="#" className="link"><img src={blacklistUser} />blacklist user</a></li>
-								            <li><a href="#" className="link"><img src={activateUser} />activate user</a></li>
+								            <li><a href="#" className="link"><img src={blacklistUser} alt="blacklist user"/>blacklist user</a></li>
+								            <li><a href="#" className="link"><img src={activateUser} alt="activate user" />activate user</a></li>
 								          </ul>
 								        </div>
 								      </div>
