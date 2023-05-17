@@ -36,29 +36,21 @@ const Dashboard = () => {
   	const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
   	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const itemsPerPage = 10; // Number of items to display per page
+	const itemsPerPage = 9; // Number of items to display per page
+
+	const [orgNameSearchTerm, setOrgNameSearchTerm] = useState<string>('');
+	const [emailSearchTerm, setEmailSearchTerm] = useState<string>('');
+	const [userNameSearchTerm, setUserNameSearchTerm] = useState<string>('');
+	const [filteredData, setFilteredData] = useState<User[]>([]);
+  
 
 
   useEffect(() => {
-    // fetchData();
-
   	setTimeout(() => {
       fetchData();
     }, 1000);
 
   }, []);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users');
-  //     const jsonData = await response.json();
-  //     setData(jsonData);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.log('Error fetching data:', error);
-  //     setLoading(false)
-  //   }
-  // };
 
 
   const fetchData = async () => {
@@ -177,6 +169,23 @@ const Dashboard = () => {
 	const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
 
+	// filter
+	const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	    event.preventDefault();
+
+	    const filteredUserss = data.filter((user) =>
+	      user.userName.toLowerCase().includes(userNameSearchTerm.toLowerCase()) ||
+	      user.email.toLowerCase().includes(emailSearchTerm.toLowerCase()) ||
+	      user.orgName.toLowerCase().includes(orgNameSearchTerm.toLowerCase())
+	    );
+
+	    setFilteredData(filteredUserss);
+	};
+
+	// Use the filteredData state to render the filtered users
+	const filteredUserss = filteredData.length > 0 ? filteredData : data;
+
+
 
 	return (
 		<HelmetProvider>
@@ -202,6 +211,31 @@ const Dashboard = () => {
 		               <div className="col-lg-12">
 		               		<p className="users-text">users</p>
 		               </div>
+
+
+
+		               {/*<form onSubmit={handleSearchSubmit}>
+				        <input
+				          type="text"
+				          value={orgNameSearchTerm}
+				          onChange={(e) => setOrgNameSearchTerm(e.target.value)}
+				          placeholder="Search by orgName"
+				        />
+				        <input
+				          type="text"
+				          value={emailSearchTerm}
+				          onChange={(e) => setEmailSearchTerm(e.target.value)}
+				          placeholder="Search by email"
+				        />
+				        <input
+				          type="text"
+				          value={userNameSearchTerm}
+				          onChange={(e) => setUserNameSearchTerm(e.target.value)}
+				          placeholder="Search by userName"
+				        />
+				        <button type="submit">Search</button>
+				      </form>*/}
+
 
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
@@ -337,6 +371,21 @@ const Dashboard = () => {
 			        Next
 			      </button>
 			    </div>
+
+
+
+			    {/*filter*/}
+
+			    {/*{filteredUserss.map((filtered) => {
+			    	return (
+			    		<>
+			    			<p>{filtered.orgName}</p>
+				    		<p>{filtered.userName}</p>
+				    		<p>{filtered.email}</p>
+			    		</>
+			    	)
+			    })}*/}
+
 
 
 

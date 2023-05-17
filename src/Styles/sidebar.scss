@@ -40,7 +40,7 @@ $font-family_1: 'Work Sans';
             padding: 10px 0;
             font-family: $font-family_1;
             font-style: normal;
-            font-weight: 400;
+            font-weight: 200;
             font-size: 16px;
             line-height: 19px;
             color: $color_2;
@@ -645,5 +645,20 @@ $font-family_1: 'Work Sans';
    font-weight: 400;
    font-size: 16px;
    line-height: 19px;
-   color: #213F7D;  
+   color: #213F7D;
+   border-top: 1px solid #E5E5E5;
+   margin-top: 30%; 
+}
+
+.version {
+   margin-top: 10%;
+}
+
+.version a {
+   font-family: 'Work Sans';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 12px !important;
+   line-height: 14px;
+   color: #213F7D;
 }

@@ -124,6 +124,10 @@ const Sidebar = () => {
 		         		<a href="#"><span className="pull-left"><img src={logout} /></span>logout</a>
 		         	</li>
 
+		         	<li className="version">
+		         		<a href="/login"><span className="pull-left"></span>v1.2.0</a>
+		         	</li>
+
 		        </ul>
 
 
