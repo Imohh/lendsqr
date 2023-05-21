@@ -16,6 +16,15 @@ interface StepOneProps {
 	}
 	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	firstNameError: string
+	formData: {
+		firstName: string
+		lastName: string
+		orgName: string
+		orgType: string
+		workEmail: string
+		password: string
+	}
+	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const StepOne: React.FC<StepOneProps> = ({
@@ -81,15 +90,11 @@ const StepOne: React.FC<StepOneProps> = ({
 									</p>
 								</div>
 
-								<div className='w-full max-w-3xl'>
-									<div className='flex flex-wrap mb-6'>
-										<div className='w-full md:w-1/2 mb-8 md:mb-0'>
-											<label className='capitalized text-stone-900 text-lg py-1 px-0'>
-												First name*
-											</label>
+								<div className='container form-container'>
+									<div className='row'>
+										<div className='col-lg-6'>
+											<label>first name*</label>
 											<input
-												className='appearance-none block md:w-[89%] w-full bg-white-100/70 text-gray-700 outline outline-1 outline-offset-0.5 outline-gray-300
-												 rounded-md py-3.5 px-3 mb-3 leading-tight focus:outline-black focus:bg-white'
 												type='text'
 												name='firstName'
 												value={formData.firstName}

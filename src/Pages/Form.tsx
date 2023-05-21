@@ -1,13 +1,42 @@
+// import {useState} from 'react'
+
+// import { Button, Input, Space } from "@/components";
+// import { EyeIcon, Key } from "lucide-react";
+// import { useHistory, useParams } from 'react-router-dom';
+
+// const Login = () => {
+
+  
+
+//     return (
+//         <div className="m-10 max-w-max">
+//             <Input leftIcon={<Key />} rightIcon={<EyeIcon />} />
+//             <Space size={4} />
+//             <Button variant="outline">Login</Button>
+
+//             <h2>hello world</h2>
+//         </div>
+//     );
+// };
+
+// export default Login;
+
+
+
+
+
 import React, { useState } from 'react';
 import StepOne from './onboarding/StepOne'
 import StepTwo from './onboarding/StepTwo'
+import '../styles/form.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 enum LoginStep {
   Step1 = 'step1',
   Step2 = 'step2',
 }
 
-const Form = () => {
+const Login = () => {
 
   const [firstNameError, setFirstNameError] = useState('');
   const [lastNameError, setLastNameError] = useState('');
@@ -49,7 +78,6 @@ const Form = () => {
       setLastNameError('');
     }
 
-    // Repeat the above pattern for the other input fields
 
     if (isValid) {
       // Proceed to the next step or submit the form
@@ -79,14 +107,13 @@ const Form = () => {
         return <StepOne 
                   formData={formData} 
                   handleInputChange={handleInputChange}
-                  firstNameError={firstNameError}
                 />
 
       case LoginStep.Step2:
         return <StepTwo formData={formData} handleInputChange={handleInputChange}/>
 
       default:
-        return <StepOne formData={formData} handleInputChange={handleInputChange} firstNameError={firstNameError}/>;
+        return <StepOne formData={formData} handleInputChange={handleInputChange}/>;
     }
   };
 
@@ -97,4 +124,7 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Login;
+
+
+
