@@ -17,10 +17,12 @@ const Forms: React.FC = () => {
   const param = queryParams.get("step") || "";
 
   useEffect(() => {
-    // navigate("/forms?step=one");
     // setStep(param)
     setStep(param);
   }, [step, formData, navigate, queryParams]);
+  useEffect(() => {
+    navigate("/forms?step=one");
+  }, []);
   const mainstep = queryParams.get("step") || "one";
 
   const handleFormSubmit = (e: React.FormEvent) => {
