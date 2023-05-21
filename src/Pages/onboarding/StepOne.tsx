@@ -15,7 +15,6 @@ interface StepOneProps {
     password: string,
   };
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  firstNameError:string
 }
 
 const StepOne: React.FC<StepOneProps>  = ({formData, handleInputChange, firstNameError}) => {

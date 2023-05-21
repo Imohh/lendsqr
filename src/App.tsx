@@ -4,6 +4,7 @@ import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import Detail from './Pages/Detail'
 import Form from './Pages/Form'
+import Forms from './Pages/Forms'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="dashboard/users/:id" element={<Detail />} />
         <Route path="/form" element={<Form/>} />
+        <Route path="/forms" element={<Forms/>} />
       </Routes>
     </BrowserRouter>
   );
