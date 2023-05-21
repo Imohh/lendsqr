@@ -1,46 +1,39 @@
 // URL STATE HANDLING
 
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Forms: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [step, setStep] = useState<number>(1);
-  const [formData, setFormData] = useState({ step1: '', step2: '' });
+  // const [step, setStep] = useState<number>(1);
+  const [formData, setFormData] = useState({ step1: "", step2: "" });
+  const [step, setStep] = useState<string>("one");
+
+  // const s
+  const queryParams = new URLSearchParams();
+
+  const param = queryParams.get("step");
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const stepParam = urlParams.get('step');
-    const stepFromURL = parseInt(stepParam || '1', 10);
-    setStep(stepFromURL);
-
-    const step1Value = urlParams.get('step1');
-    const step2Value = urlParams.get('step2');
-    setFormData({
-      step1: step1Value || '',
-      step2: step2Value || '',
-    });
-  }, [location]);
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams();
-    queryParams.set('step', String(step));
-    queryParams.set('step1', formData.step1);
-    queryParams.set('step2', formData.step2);
-    navigate({ search: queryParams.toString() });
-  }, [step, formData, navigate]);
+    // navigate("/forms?step=one");
+    // setStep(param)
+  }, [step, formData, navigate, queryParams]);
+  const mainstep = queryParams.get("step") || "one";
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (step === 1) {
-      setStep(2);
+    if (step == "one") {
+      // navigate("/step");
+      setStep("two");
+      queryParams.set("step", "two");
+      // setStep(2);
     } else {
       // Final form submission logic
       // ...
-      console.log("submitted")
+      console.log("submitted");
     }
   };
 
@@ -52,9 +45,11 @@ const Forms: React.FC = () => {
     }));
   };
 
+
+  console.log(mainstep)
   return (
     <form onSubmit={handleFormSubmit}>
-      {step === 1 && (
+      {step == "one" && (
         <div>
           <h2>Step 1</h2>
           <input
@@ -64,11 +59,13 @@ const Forms: React.FC = () => {
             onChange={handleInputChange}
             autoFocus
           />
-          <button type="submit">Next</button>
+          <button type="submit" onClick={() => navigate("/forms?step=two")}>
+            Next
+          </button>
         </div>
       )}
 
-      {step === 2 && (
+      {step == "two" && (
         <div>
           <h2>Step 2</h2>
           <input
