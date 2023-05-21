@@ -85,6 +85,8 @@ $color_3: #213F7D;
       text-transform: uppercase;
       color: $color_2;
       padding: 1%;
+      cursor: pointer;
+      // width: 16.5%;
     }
   }
   tbody {
@@ -541,3 +543,11 @@ $color_3: #213F7D;
     margin: 0;
   }
 }
+
+
+
+
+.pagination {
+  background: green;
+}
+

@@ -10,9 +10,10 @@ import savingsUsers from '../images/dashboard/glyph4.png'
 import viewDetail from '../images/dashboard/view-detail.png'
 import activateUser from '../images/dashboard/activate-user.png'
 import blacklistUser from '../images/dashboard/blacklist-user.png'
+import filter from '../images/dashboard/filter.png'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
-// import Detail from './Detail'
+import DashboardFilterForm from '../Components/DashboardFilterForm'
 
 export interface User{
 	id: number,
@@ -21,7 +22,8 @@ export interface User{
   orgName: string,
   userName: string,
   createdAt: string,
-  lastActiveDate: string
+  lastActiveDate: string,
+  // status: string
 }
 
 const Dashboard = () => {
@@ -34,12 +36,12 @@ const Dashboard = () => {
   	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalPages, setTotalPages] = useState<number>(0);
 	const itemsPerPage = 9; // Number of items to display per page
-
-	const [orgNameSearchTerm, setOrgNameSearchTerm] = useState<string>('');
-	const [emailSearchTerm, setEmailSearchTerm] = useState<string>('');
-	const [userNameSearchTerm, setUserNameSearchTerm] = useState<string>('');
 	const [filteredData, setFilteredData] = useState<User[]>([]);
-  
+	const [showFilterForm, setShowFilterForm] = useState<boolean>(false);
+	const [userCount, setUserCount] = useState<number>(0);
+	
+
+	
 
 
   useEffect(() => {
@@ -59,6 +61,7 @@ const Dashboard = () => {
     setData(jsonData);
     setTotalPages(totalPages);
     setLoading(false);
+    setUserCount(totalItems);
   } catch (error) {
     console.log('Error fetching data:', error);
     setLoading(false);
@@ -73,24 +76,59 @@ const Dashboard = () => {
   };
 
   const getStatus = (date: string): string => {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const tenYearsAgo = year - 10;
-  const year2000 = 2000;
-  const year2022 = 2022;
+	  const currentDate = new Date();
+	  const year = currentDate.getFullYear();
+	  const tenYearsAgo = year - 10;
+	  const year2000 = 2000;
+	  const year2022 = 2022;
 
-  const parsedDate = new Date(date);
+	  const parsedDate = new Date(date);
 
-  if (parsedDate.getFullYear() < year2000) {
-    return 'blacklisted';
-  } else if (parsedDate.getFullYear() >= year2022) {
-    return 'active';
-  } else if (parsedDate.getFullYear() <= tenYearsAgo) {
-    return 'pending';
-  }
+	  if (parsedDate.getFullYear() <= year2000) {
+	    return 'blacklisted';
+	  } else if (parsedDate.getFullYear() <= 2023) {
+	    return 'active';
+	  } else if (parsedDate.getFullYear() <= tenYearsAgo) {
+	    return 'pending';
+	  }
 
-  return 'unknown';
-};
+	  return 'unknown';
+  };
+
+
+  // status color
+	  const getStatusColor = (status: string): string => {
+	    if (status === 'active') {
+	      return '#39CD62';
+	    } else if (status === 'inactive') {
+	      return '#545F7D';
+	    } else if (status === 'blacklisted') {
+	      return '#E4033B';
+	    } else if (status === 'pending') {
+	      return '#E9B200';
+	    }
+	    return 'red'; // Default color if status doesn't match any condition
+	  };
+
+	  const getStatusBackgroundColor = (status: string): string => {
+	    if (status === 'active') {
+	      return 'rgba(57, 205, 98, 0.06)';
+	    } else if (status === 'inactive') {
+	      return 'rgba(84, 95, 125, 0.06)';
+	    } else if (status === 'blacklisted') {
+	      return 'rgba(228, 3, 59, 0.1)';
+	    } else if (status === 'pending') {
+	      return 'rgba(233, 178, 0, 0.1)';
+	    }
+	    return 'black'; // Default color if status doesn't match any condition
+	  };
+
+
+
+
+
+
+
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -103,20 +141,7 @@ const Dashboard = () => {
 
 	const shouldShowSearch = true;
 
-
-	  const getStatusColor = (status: string): string => {
-	    if (status === 'Active') {
-	      return 'red';
-	    } else if (status === 'inactive') {
-	      return 'blue';
-	    } else if (status === 'pending') {
-	      return 'green';
-	    }
-	    return 'black'; // Default color if status doesn't match any condition
-	  };
-
-
-
+	  
 
 	  // pagination
 	  const paginateData = (data: User[]): User[] => {
@@ -161,21 +186,17 @@ const Dashboard = () => {
 	const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
 
-	// filter
-	const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-	    event.preventDefault();
 
-	    const filteredUserss = data.filter((user) =>
-	      user.userName.toLowerCase().includes(userNameSearchTerm.toLowerCase()) ||
-	      user.email.toLowerCase().includes(emailSearchTerm.toLowerCase()) ||
-	      user.orgName.toLowerCase().includes(orgNameSearchTerm.toLowerCase())
-	    );
+	// filter form
+	const handleFilter = (filteredData: User[]) => {
+    	setFilteredData(filteredData);
+  	};
 
-	    setFilteredData(filteredUserss);
+  	//hide or show filter form
+  	const toggleFilterForm = () => {
+	    setShowFilterForm(!showFilterForm);
 	};
 
-	// Use the filteredData state to render the filtered users
-	const filteredUserss = filteredData.length > 0 ? filteredData : data;
 
 
 
@@ -206,34 +227,12 @@ const Dashboard = () => {
 
 
 
-		               {/*<form onSubmit={handleSearchSubmit}>
-				        <input
-				          type="text"
-				          value={orgNameSearchTerm}
-				          onChange={(e) => setOrgNameSearchTerm(e.target.value)}
-				          placeholder="Search by orgName"
-				        />
-				        <input
-				          type="text"
-				          value={emailSearchTerm}
-				          onChange={(e) => setEmailSearchTerm(e.target.value)}
-				          placeholder="Search by email"
-				        />
-				        <input
-				          type="text"
-				          value={userNameSearchTerm}
-				          onChange={(e) => setUserNameSearchTerm(e.target.value)}
-				          placeholder="Search by userName"
-				        />
-				        <button type="submit">Search</button>
-				      </form>*/}
-
 
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={users} alt="users"/>
 		               			<p className="first-text">users</p>
-		               			<p className="total">2,453</p>
+		               			<p className="total">{userCount}</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
@@ -268,12 +267,12 @@ const Dashboard = () => {
 				   	) : (
 				    <table className="table">
 					  <thead>
-					      <th scope="col">organization</th>
-					      <th scope="col">username</th>
-					      <th scope="col">email</th>
-					      <th scope="col">phone number</th>
-					      <th scope="col">date joined</th>
-					      <th scope="col">status</th>
+					      <th onClick={toggleFilterForm} scope="col">organization<img src={filter} alt="filter" /></th>
+					      <th onClick={toggleFilterForm} scope="col">username<img src={filter} alt="filter" /></th>
+					      <th onClick={toggleFilterForm} scope="col">email<img src={filter} alt="filter" /></th>
+					      <th onClick={toggleFilterForm} scope="col">phone number<img src={filter} alt="filter" /></th>
+					      <th onClick={toggleFilterForm} scope="col">date joined<img src={filter} alt="filter" /></th>
+					      <th onClick={toggleFilterForm} scope="col">status<img src={filter} alt="filter" /></th>
 					      <th></th>
 					  </thead>
 
@@ -284,9 +283,17 @@ const Dashboard = () => {
 						      <td>{item.orgName}</td>
 						      <td>{item.userName}</td>
 						      <td>{item.email}</td>
-						      <td>{item.phoneNumber}</td>
+						      <td>{String(item.phoneNumber).replace(/[^\d()]/g, '')}</td>
 						      <td>{formatTime(item.createdAt)}</td>
-						      <td><span className="badge badge-pill" style={{ color: getStatusColor(item.lastActiveDate) }} >{getStatus(item.lastActiveDate)}</span></td>
+						      <td><span 
+						      		style={{ 
+						      			color: getStatusColor(getStatus(item.lastActiveDate)), 
+						      			background: getStatusBackgroundColor(getStatus(item.lastActiveDate)),
+						      			borderRadius: "100px", 
+						      			padding: "5px 10px" }}>
+						      				{getStatus(item.lastActiveDate)}
+						      		</span>
+						      </td>
 						      <td>
 
 						      	<div id="container">
@@ -319,25 +326,12 @@ const Dashboard = () => {
 					  )
 			          })}
 					</table>
-					)}	
+					)}
+					{showFilterForm && <DashboardFilterForm data={data} onFilter={handleFilter} />}
 			  	  </section>
 
 
-			  	  {/*<div className="pagination">
-			      	<button
-			        	onClick={handlePreviousPage}
-			        	disabled={currentPage === 1}
-				    >
-			        	Previous
-			      	</button>
-			      	<span>{currentPage}</span>
-			      	<button
-			        	onClick={handleNextPage}
-			        	disabled={currentPage === totalPages}
-			      	>
-			        	Next
-			      	</button>
-			      </div>*/}
+			  	  
 
 			      <div className="pagination">
 				    <button
@@ -368,19 +362,12 @@ const Dashboard = () => {
 
 			    {/*filter*/}
 
-			    {/*{filteredUserss.map((filtered) => {
-			    	return (
-			    		<>
-			    			<p>{filtered.orgName}</p>
-				    		<p>{filtered.userName}</p>
-				    		<p>{filtered.email}</p>
-			    		</>
-			    	)
-			    })}*/}
-
-
-
-
+			    
+			    <ul>
+			        {filteredData.map((user) => (
+			          <li key={user.id}>{user.orgName}</li>
+			        ))}
+			    </ul>
 
 		      {/*<!-- /#page-content-wrapper -->*/}
 		   	</div>

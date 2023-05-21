@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import Detail from './Pages/Detail'
+import Form from './Pages/Form'
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
         <Route path="/dashboard/:slug" element={<Dashboard />} />
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        {/*<Route path="dashboard/users/detail/:id" element={<Detail />} />*/}
         <Route path="dashboard/users/:id" element={<Detail />} />
+        <Route path="/form" element={<Form/>} />
       </Routes>
     </BrowserRouter>
   );

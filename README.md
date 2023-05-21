@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Pages Created
 
-1. Login
-2. Dashboard
-3. User Page
+- Login
+- Dashboard
+- User Page
 
 In the project directory, you can run:
 
@@ -36,9 +36,17 @@ it also displays the full data for all users in a paginated table thats shows th
 This page displays every detail of the user fetched from the API
 
 
+## Tech Stack
+- TypeScript
+- React
+- React Router
+- Vercel
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Additional
+- I removed the search bar on the user page because the function only works for the dashboard fetched items sothere was no point putting it there so i created a function to hide it.
+- i created a validated form field for the login form.
+
+
 
 ### `npm start`
 Runs the app in the development mode.
