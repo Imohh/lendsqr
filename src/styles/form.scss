@@ -1,13 +1,13 @@
 // SIDEBAR SECTION
 
 .onboarding-sidebar-section {
-	background: #EFEFF9;
+	background: #75757c;
 	padding: 0;
 }
 
 .onboarding-sidebar-section .sidebar-logo {
 	margin: 0;
-	padding: 40px;
+	padding: 30px;
 	border-bottom: 1px solid #DADCE0;
 }
 
@@ -97,50 +97,31 @@
 // MAIN SECTION
 .sidebar-main {
 	background: #fff;
-	padding: 70px;
+	padding: 3.2em;
 }
 
-.sidebar-main .page-no {
-	padding-left: 89%;
-}
-.sidebar-main .page-no p {
-	background: #EFEFF9;
-	border-radius: 100px;
-	width: 100%;
-	padding: 10px;
-	text-align: center;
+// .sidebar-main .page-no {
+// 	padding-left: 89%;
+// }
+// .sidebar-main .page-no p {
+// 	background: #EFEFF9;
+// 	border-radius: 100px;
+// 	width: 100%;
+// 	padding: 10px;
+// 	text-align: center;
 
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 136%;
-	display: flex;
-	align-items: center;
-	letter-spacing: 0.04em;
-	color: #202020;
-}
+// 	// font-family: 'Neue Montreal';
+// 	font-style: normal;
+// 	font-weight: 500;
+// 	font-size: 20px;
+// 	line-height: 136%;
+// 	display: flex;
+// 	align-items: center;
+// 	letter-spacing: 0.04em;
+// 	color: #202020;
+// }
 
-.sidebar-main .header-text {
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 40px;
-	line-height: 41px;
-	display: flex;
-	align-items: center;
-	color: #31254B;
-}
 
-.sidebar-main p {
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 136%;
-	letter-spacing: -0.025em;
-	color: #202020;
-}
 
 .sidebar-main .header-text-section {
 	margin-bottom: 5%;
@@ -150,20 +131,20 @@
 	padding: 0;
 }
 
-.sidebar-main label {
-	width: 100%;
-	padding: 10px 0;
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 26px;
-	display: flex;
-	align-items: center;
-	letter-spacing: -0.5px;
-	color: #202020;
-	text-transform: capitalize
-}
+// .sidebar-main label {
+// 	width: 100%;
+// 	padding: 10px 0;
+// 	// font-family: 'Neue Montreal';
+// 	font-style: normal;
+// 	font-weight: 400;
+// 	font-size: 16px;
+// 	line-height: 26px;
+// 	display: flex;
+// 	align-items: center;
+// 	letter-spacing: -0.5px;
+// 	color: #202020;
+// 	text-transform: capitalize
+// }
 
 .form-input {
 	margin-bottom: 10px;
