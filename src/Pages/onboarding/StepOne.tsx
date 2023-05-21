@@ -34,14 +34,14 @@ const StepOne: React.FC<StepOneProps> = ({
 			<section>
 				<div className=''>
 					<div className='md:flex'>
-						<div className='lg:w-1/4 w-full m-0 bg-purple-50 px-2 py-1'>
+						<div className='lg:w-1/4 w-full m-0 bg-purple-50 py-1'>
 							<div className='m-0 border-b-2 border-purple-300 m-0'>
-								<h1 className='text-[#31254A] text-3xl py-10 px-3 tracking-wide'>
+								<h1 className='text-purple-800 text-3xl py-10 px-6 tracking-wide'>
 									Bizpend
 								</h1>
 							</div>
 
-							<div className='sidebar-container h-full px-2 mt-4'>
+							<div className='sidebar-container h-full px-6 mt-4'>
 								<div className='active '>
 									<div className='sidebar-check-img py-2'>
 										<img src={ActiveCheck} />
@@ -63,17 +63,20 @@ const StepOne: React.FC<StepOneProps> = ({
 								</div>
 							</div>
 
-							<img src={SidebarImage} className='aspect-square object-fit' />
+							<img
+								src={SidebarImage}
+								className='aspect-square object-contain lg:absolute lg:inset-y-[28rem] w-[15rem]'
+							/>
 						</div>
 
-						<div className='lg:w-3/4 w-full p-10'>
+						<div className='lg:w-3/4 w-full p-5'>
 							<div className='float-right'>
 								<p className='bg-[#EFEFF9] px-2 py-1 text-md rounded-xl'>
 									1/2 steps
 								</p>
 							</div>
 
-							<div className='mt-2'>
+							<div className='lg:mt-12'>
 								<div className=''>
 									<p className='md:text-[2.8rem] text-3xl text-[#31254B] font-bold mt-4'>
 										Join us today
