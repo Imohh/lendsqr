@@ -6,19 +6,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Forms: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const { search } = useLocation();
   // const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState({ step1: "", step2: "" });
   const [step, setStep] = useState<string>("one");
 
   // const s
-  const queryParams = new URLSearchParams();
+  const queryParams = new URLSearchParams(window?.location?.search);
 
-  const param = queryParams.get("step");
+  const param = queryParams.get("step") || "";
 
   useEffect(() => {
     // navigate("/forms?step=one");
     // setStep(param)
+    setStep(param);
   }, [step, formData, navigate, queryParams]);
   const mainstep = queryParams.get("step") || "one";
 
@@ -45,8 +46,7 @@ const Forms: React.FC = () => {
     }));
   };
 
-
-  console.log(mainstep)
+  console.log(mainstep);
   return (
     <form onSubmit={handleFormSubmit}>
       {step == "one" && (
