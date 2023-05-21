@@ -54,7 +54,7 @@ const Login = () => {
     orgType: '',
     workEmail: '',
     password: '',
-    otp: ''
+    otp: '',
   });
 
 

@@ -29,6 +29,7 @@ const Forms: React.FC = () => {
     e.preventDefault();
 
     if (step == "one") {
+      
       // navigate("/step");
       setStep("two");
       queryParams.set("step", "two");
