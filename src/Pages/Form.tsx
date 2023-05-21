@@ -6,8 +6,6 @@
 
 // const Login = () => {
 
-  
-
 //     return (
 //         <div className="m-10 max-w-max">
 //             <Input leftIcon={<Key />} rightIcon={<EyeIcon />} />
@@ -21,110 +19,104 @@
 
 // export default Login;
 
-
-
-
-
-import React, { useState } from 'react';
-import StepOne from './onboarding/StepOne'
-import StepTwo from './onboarding/StepTwo'
-import '../styles/form.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react"
+import StepOne from "./onboarding/StepOne"
+import StepTwo from "./onboarding/StepTwo"
+import "../styles/form.scss"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 enum LoginStep {
-  Step1 = 'step1',
-  Step2 = 'step2',
+	Step1 = "step1",
+	Step2 = "step2",
 }
 
 const Login = () => {
+	const [firstNameError, setFirstNameError] = useState("")
+	const [lastNameError, setLastNameError] = useState("")
+	const [orgNameError, setOrgNameError] = useState("")
+	const [orgTypeError, setOrgTypeError] = useState("")
+	const [workEmailError, setWorkEmailError] = useState("")
+	const [passwordError, setPasswordError] = useState("")
 
-  const [firstNameError, setFirstNameError] = useState('');
-  const [lastNameError, setLastNameError] = useState('');
-  const [orgNameError, setOrgNameError] = useState('');
-  const [orgTypeError, setOrgTypeError] = useState('');
-  const [workEmailError, setWorkEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+	const [step, setStep] = useState(LoginStep.Step1)
+	const [formData, setFormData] = useState({
+		firstName: "",
+		lastName: "",
+		orgName: "",
+		orgType: "",
+		workEmail: "",
+		password: "",
+		otp: "",
+	})
 
+	const handleFormSubmit = (event: React.FormEvent) => {
+		event.preventDefault()
 
-  const [step, setStep] = useState(LoginStep.Step1);
-  const [formData, setFormData] = useState({
-    firstName:'',
-    lastName: '',
-    orgName: '',
-    orgType: '',
-    workEmail: '',
-    password: '',
-    otp: ''
-  });
+		let isValid = true
 
+		if (!formData.firstName) {
+			setFirstNameError("First name is required")
+			isValid = false
+		} else {
+			setFirstNameError("")
+		}
 
-  const handleFormSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+		if (!formData.lastName) {
+			setLastNameError("Last name is required")
+			isValid = false
+		} else {
+			setLastNameError("")
+		}
 
+		if (isValid) {
+			// Proceed to the next step or submit the form
+			setStep(LoginStep.Step2)
+		}
 
-    let isValid = true;
+		if (step === LoginStep.Step1) {
+			setStep(LoginStep.Step2)
+		} else if (step === LoginStep.Step2) {
+			// Handle final form submission
+			console.log(formData) // Perform API request or further processing here
+		}
+	}
 
-    if (!formData.firstName) {
-      setFirstNameError('First name is required');
-      isValid = false;
-    } else {
-      setFirstNameError('');
-    }
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target
+		setFormData((prevFormData) => ({
+			...prevFormData,
+			[name]: value,
+		}))
+	}
 
-    if (!formData.lastName) {
-      setLastNameError('Last name is required');
-      isValid = false;
-    } else {
-      setLastNameError('');
-    }
+	const renderFormContent = () => {
+		switch (step) {
+			case LoginStep.Step1:
+				return (
+					<StepOne
+						formData={formData}
+						handleInputChange={handleInputChange}
+						firstNameError={""}
+					/>
+				)
 
+			case LoginStep.Step2:
+				return (
+					<StepTwo formData={formData} handleInputChange={handleInputChange} />
+				)
 
-    if (isValid) {
-      // Proceed to the next step or submit the form
-      setStep(LoginStep.Step2);
-    }
+			default:
+				return (
+					<StepOne
+						formData={formData}
+						handleInputChange={handleInputChange}
+						firstNameError={""}
+					/>
+				)
+		}
+	}
 
-    if (step === LoginStep.Step1) {
-      setStep(LoginStep.Step2);
-    } else if (step === LoginStep.Step2) {
-      // Handle final form submission
-      console.log(formData); // Perform API request or further processing here
-    }
+	return <form onSubmit={handleFormSubmit}>{renderFormContent()}</form>
+}
 
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const renderFormContent = () => {
-    switch (step) {
-      case LoginStep.Step1:
-        return <StepOne 
-                  formData={formData} 
-                  handleInputChange={handleInputChange}
-                />
-
-      case LoginStep.Step2:
-        return <StepTwo formData={formData} handleInputChange={handleInputChange}/>
-
-      default:
-        return <StepOne formData={formData} handleInputChange={handleInputChange}/>;
-    }
-  };
-
-  return (
-    <form onSubmit={handleFormSubmit}>
-      {renderFormContent()}
-    </form>
-  );
-};
-
-export default Login;
-
-
-
+export default Login

@@ -16,15 +16,6 @@ interface StepOneProps {
 	}
 	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	firstNameError: string
-	formData: {
-		firstName: string
-		lastName: string
-		orgName: string
-		orgType: string
-		workEmail: string
-		password: string
-	}
-	handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const StepOne: React.FC<StepOneProps> = ({
@@ -41,16 +32,18 @@ const StepOne: React.FC<StepOneProps> = ({
 	return (
 		<>
 			<section>
-				<div className='container'>
-					<div className='row'>
-						<div className='col-lg-3 bg-purple-50 px-5 py-3'>
-							<div className='m-0 p-[40px]'>
-								<h1>Bizpend</h1>
+				<div className=''>
+					<div className='md:flex'>
+						<div className='lg:w-1/4 w-full m-0 bg-purple-50 px-2 py-1'>
+							<div className='m-0 border-b-2 border-purple-300 m-0'>
+								<h1 className='text-[#31254A] text-3xl py-10 px-3 tracking-wide'>
+									Bizpend
+								</h1>
 							</div>
 
-							<div className='sidebar-container h-full'>
-								<div className='active'>
-									<div className='sidebar-check-img'>
+							<div className='sidebar-container h-full px-2 mt-4'>
+								<div className='active '>
+									<div className='sidebar-check-img py-2'>
 										<img src={ActiveCheck} />
 									</div>
 									<div className='sidebar-text'>
@@ -60,7 +53,7 @@ const StepOne: React.FC<StepOneProps> = ({
 								</div>
 
 								<div>
-									<div className='sidebar-check-img'>
+									<div className='sidebar-check-img py-2'>
 										<img src={InactiveCheck} />
 									</div>
 									<div className='sidebar-text'>
@@ -70,10 +63,10 @@ const StepOne: React.FC<StepOneProps> = ({
 								</div>
 							</div>
 
-							<img src={SidebarImage} />
+							<img src={SidebarImage} className='aspect-square object-fit' />
 						</div>
 
-						<div className='col-lg-9 sidebar-main'>
+						<div className='lg:w-3/4 w-full p-10'>
 							<div className='float-right'>
 								<p className='bg-[#EFEFF9] px-2 py-1 text-md rounded-xl'>
 									1/2 steps
@@ -82,19 +75,23 @@ const StepOne: React.FC<StepOneProps> = ({
 
 							<div className='mt-2'>
 								<div className=''>
-									<p className='text-[2.5rem] text-[#31254B] font-bold -mb-1'>
+									<p className='md:text-[2.8rem] text-3xl text-[#31254B] font-bold mt-4'>
 										Join us today
 									</p>
-									<p className='text-lg'>
+									<p className='text-md md:text-lg'>
 										Begin your journey to easy financial management
 									</p>
 								</div>
 
-								<div className='container form-container'>
-									<div className='row'>
-										<div className='col-lg-6'>
-											<label>first name*</label>
+								<div className='w-full max-w-3xl'>
+									<div className='flex flex-wrap mb-6'>
+										<div className='w-full md:w-1/2 mb-8 md:mb-0'>
+											<label className='capitalized text-stone-900 text-lg py-1 px-0'>
+												First name*
+											</label>
 											<input
+												className='appearance-none block md:w-[89%] w-full bg-white-100/70 text-gray-700 outline outline-1 outline-offset-0.5 outline-gray-300
+												 rounded-md py-3.5 px-3 mb-3 leading-tight focus:outline-black focus:bg-white'
 												type='text'
 												name='firstName'
 												value={formData.firstName}
@@ -121,24 +118,24 @@ const StepOne: React.FC<StepOneProps> = ({
 											/>
 										</div>
 
-										<div className='w-full md:mb-8 md:mb-0'>
-											<label className='capitalized text-stone-900 text-lg font-base py-1 px-0'>
-												Organization name{" "}
+										<div className='w-full md:mb-8 mb-4'>
+											<label className='capitalized text-stone-900 text-md font-base py-1 px-0'>
+												Organization name*
 											</label>
 											<input
 												type='text'
 												name='orgName'
 												value={formData.orgName}
 												onChange={handleInputChange}
-												placeholder='Enter the name of your organization'
+												placeholder='Tesla'
 												required
-												className='appearance-none block w-full w-72 bg-white-200 text-gray-700 text-lg border border-red-500
-												 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
+												className='appearance-none block w-full w-72 bg-white-200 text-gray-700 md:text-lg border border-red-500
+												 rounded py-3 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'
 											/>
 										</div>
 
-										<div className='w-full md:w-1/2 my-3 md:mb-0'>
-											<label className='capitalize text-stone-900 text-md font-base py-1 px-0'>
+										<div className='w-full md:w-1/2 md:my-2 md:mb-0'>
+											<label className='capitalize text-stone-900 text-md pl-2 font-base py-1 px-0'>
 												organization type*
 											</label>
 											<input
@@ -153,8 +150,8 @@ const StepOne: React.FC<StepOneProps> = ({
 											/>
 										</div>
 
-										<div className='w-full md:w-1/2 md:my-3 md:mb-0'>
-											<label className='capitalize text-stone-900 md:text-md font-base py-1 px-0'>
+										<div className='w-full md:w-1/2 md:my-2 px-2 md:mb-0'>
+											<label className='capitalize text-stone-900 md:text-md font-base py-1 px-3'>
 												work email*
 											</label>
 											<input
@@ -169,7 +166,7 @@ const StepOne: React.FC<StepOneProps> = ({
 											/>
 										</div>
 
-										<div className='w-full px-3 my-3 md:mb-0'>
+										<div className='w-full my-3 md:mb-0'>
 											<label className='capitalize text-stone-900 md:text-md font-base py-1 px-0'>
 												password*
 											</label>
@@ -186,17 +183,23 @@ const StepOne: React.FC<StepOneProps> = ({
 												type='button'
 												id='showText'
 												value={showPassword ? "Hide" : "Show"}
+												className='float-right'
 											/>
 										</div>
 
-										<div className='col-lg-12 sidebar-main-footer'>
-											<div className='col-lg-6 login-option'>
+										<div className='flex w-full space-x-4 mt-[2%]'>
+											<div className='w-4/5 login-option'>
 												<p>
-													Already have an account?<span>log in</span>
+													Already have an account?{" "}
+													<span className='text-blue-500 font-bold'>
+														Log in
+													</span>
 												</p>
 											</div>
-											<div className='col-lg-6 button-next'>
-												<button>create account</button>
+											<div className='float-right'>
+												<button className='bg-[#4539ff] rounded-md text-white border-none w-32 py-3 -mt-3'>
+													Create account
+												</button>
 											</div>
 										</div>
 									</div>
