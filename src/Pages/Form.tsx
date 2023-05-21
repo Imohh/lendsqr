@@ -26,9 +26,9 @@
 
 
 import React, { useState } from 'react';
-import StepOne from '../onboarding/StepOne'
-import StepTwo from '../onboarding/StepTwo'
-import '../styles/form.css'
+import StepOne from './onboarding/StepOne'
+import StepTwo from './onboarding/StepTwo'
+import '../styles/form.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 enum LoginStep {
@@ -54,6 +54,7 @@ const Login = () => {
     orgType: '',
     workEmail: '',
     password: '',
+    otp: ''
   });
 
 
@@ -106,14 +107,13 @@ const Login = () => {
         return <StepOne 
                   formData={formData} 
                   handleInputChange={handleInputChange}
-                  firstNameError={firstNameError}
                 />
 
       case LoginStep.Step2:
         return <StepTwo formData={formData} handleInputChange={handleInputChange}/>
 
       default:
-        return <StepOne formData={formData} handleInputChange={handleInputChange} firstNameError={firstNameError}/>;
+        return <StepOne formData={formData} handleInputChange={handleInputChange}/>;
     }
   };
 

@@ -17,7 +17,7 @@ interface StepOneProps {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const StepOne: React.FC<StepOneProps>  = ({formData, handleInputChange, firstNameError}) => {
+const StepOne: React.FC<StepOneProps>  = ({formData, handleInputChange}) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 
@@ -90,7 +90,6 @@ const StepOne: React.FC<StepOneProps>  = ({formData, handleInputChange, firstNam
 						              placeholder="John"
 						              required
 												/>
-												{firstNameError && <p className="error">hey there</p>}
 											</div>
 
 											<div className="col-lg-6">
