@@ -36,7 +36,7 @@ const Sidebar = () => {
 		         	<li className="switch">
 		         		<div className="dropdown">
 						  <a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						    <img src={switchOrganizations} />
+						    <span className="pull-left"><img src={switchOrganizations} /></span>
 						    switch organizations
 						  </a>
 
@@ -47,11 +47,6 @@ const Sidebar = () => {
 						  </div>
 						</div>
 					</li>
-
-
-		         		{/*<a href="#"><span className="pull-left"><img src={switchOrganizations} /></span> switch organizations</a>
-		         		<label><img src={switchOrganizations} />switch organizations</label>*/}
-		         	
 
 			        <label>customers</label>
 		            <li className="active">
