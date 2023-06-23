@@ -1,182 +1,182 @@
-// SIDEBAR SECTION
+// // SIDEBAR SECTION
 
-.onboarding-sidebar-section {
-	background: #75757c;
-	padding: 0;
-}
-
-.onboarding-sidebar-section .sidebar-logo {
-	margin: 0;
-	padding: 30px;
-	border-bottom: 1px solid #DADCE0;
-}
-
-.onboarding-sidebar-section .sidebar-logo h1 {
-	// font-family: 'Manrope';
-	font-style: normal;
-	font-weight: 600;
-	font-size: 24px;
-	line-height: 33px;
-	font-feature-settings: 'ss03' on;
-	color: #31254B;
-	text-transform: capitalize;
-}
-
-.onboarding-sidebar-section .sidebar-container {
-	padding: 50px 60px 100px 60px;
-	margin: 0 auto;
-}
-
-.onboarding-sidebar-section .sidebar-container .active {
-	// font-family: 'Neue Montreal';
-	padding-bottom: 20px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 30px;
-	display: flex;
-	align-items: center;
-	color: #5E5E5E;
-	flex: none;
-	order: 1;
-	flex-grow: 0;
-}
-
-.onboarding-sidebar-section .sidebar-container .sidebar-check-img {
-	float: left;
-	height: 100px;
-	margin-right: 10px;
-}
-.onboarding-sidebar-section .sidebar-container .active-text {
-	padding-top: 20px;
-	color: #202020;
-	font-weight: 700;
-	font-style: normal;
-	font-size: 20px;
-	line-height: 30px;
-	display: flex;
-	align-items: center;
-	flex: none;
-	order: 0;
-	flex-grow: 0;
-}
-
-.onboarding-sidebar-section .sidebar-container h5 {
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-size: 20px;
-	line-height: 30px;
-	display: flex;
-	align-items: center;
-	color: #838383;
-	flex: none;
-	order: 0;
-	flex-grow: 0;
-}
-
-
-
-
-.onboarding-sidebar-section .sidebar-container p {
-	
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 30px;
-	display: flex;
-	align-items: center;
-	color: #838383;
-	flex: none;
-	order: 1;
-	flex-grow: 0;
-
-}
-
-
-// MAIN SECTION
-.sidebar-main {
-	background: #fff;
-	padding: 3.2em;
-}
-
-// .sidebar-main .page-no {
-// 	padding-left: 89%;
+// .onboarding-sidebar-section {
+// 	background: #75757c;
+// 	padding: 0;
 // }
-// .sidebar-main .page-no p {
-// 	background: #EFEFF9;
-// 	border-radius: 100px;
-// 	width: 100%;
-// 	padding: 10px;
-// 	text-align: center;
 
+// .onboarding-sidebar-section .sidebar-logo {
+// 	margin: 0;
+// 	padding: 30px;
+// 	border-bottom: 1px solid #DADCE0;
+// }
+
+// // .onboarding-sidebar-section .sidebar-logo h1 {
+// // 	// font-family: 'Manrope';
+// // 	font-style: normal;
+// // 	font-weight: 600;
+// // 	font-size: 24px;
+// // 	line-height: 33px;
+// // 	font-feature-settings: 'ss03' on;
+// // 	color: #31254B;
+// // 	text-transform: capitalize;
+// // }
+
+// .onboarding-sidebar-section .sidebar-container {
+// 	padding: 50px 60px 100px 60px;
+// 	margin: 0 auto;
+// }
+
+// .onboarding-sidebar-section .sidebar-container .active {
 // 	// font-family: 'Neue Montreal';
+// 	padding-bottom: 20px;
 // 	font-style: normal;
-// 	font-weight: 500;
-// 	font-size: 20px;
-// 	line-height: 136%;
+// 	font-weight: 400;
+// 	font-size: 18px;
+// 	line-height: 30px;
 // 	display: flex;
 // 	align-items: center;
-// 	letter-spacing: 0.04em;
+// 	color: #5E5E5E;
+// 	flex: none;
+// 	order: 1;
+// 	flex-grow: 0;
+// }
+
+// .onboarding-sidebar-section .sidebar-container .sidebar-check-img {
+// 	float: left;
+// 	height: 100px;
+// 	margin-right: 10px;
+// }
+// .onboarding-sidebar-section .sidebar-container .active-text {
+// 	padding-top: 20px;
 // 	color: #202020;
+// 	font-weight: 700;
+// 	font-style: normal;
+// 	font-size: 20px;
+// 	line-height: 30px;
+// 	display: flex;
+// 	align-items: center;
+// 	flex: none;
+// 	order: 0;
+// 	flex-grow: 0;
+// }
+
+// .onboarding-sidebar-section .sidebar-container h5 {
+// 	// font-family: 'Neue Montreal';
+// 	font-style: normal;
+// 	font-size: 20px;
+// 	line-height: 30px;
+// 	display: flex;
+// 	align-items: center;
+// 	color: #838383;
+// 	flex: none;
+// 	order: 0;
+// 	flex-grow: 0;
 // }
 
 
 
-.sidebar-main .header-text-section {
-	margin-bottom: 5%;
-}
 
-.sidebar-main .container {
-	padding: 0;
-}
+// .onboarding-sidebar-section .sidebar-container p {
+	
+// 	// font-family: 'Neue Montreal';
+// 	font-style: normal;
+// 	font-weight: 400;
+// 	font-size: 18px;
+// 	line-height: 30px;
+// 	display: flex;
+// 	align-items: center;
+// 	color: #838383;
+// 	flex: none;
+// 	order: 1;
+// 	flex-grow: 0;
 
-// .sidebar-main label {
-// 	width: 100%;
-// 	padding: 10px 0;
+// }
+
+
+// // MAIN SECTION
+// .sidebar-main {
+// 	background: #fff;
+// 	padding: 3.2em;
+// }
+
+// // .sidebar-main .page-no {
+// // 	padding-left: 89%;
+// // }
+// // .sidebar-main .page-no p {
+// // 	background: #EFEFF9;
+// // 	border-radius: 100px;
+// // 	width: 100%;
+// // 	padding: 10px;
+// // 	text-align: center;
+
+// // 	// font-family: 'Neue Montreal';
+// // 	font-style: normal;
+// // 	font-weight: 500;
+// // 	font-size: 20px;
+// // 	line-height: 136%;
+// // 	display: flex;
+// // 	align-items: center;
+// // 	letter-spacing: 0.04em;
+// // 	color: #202020;
+// // }
+
+
+
+// .sidebar-main .header-text-section {
+// 	margin-bottom: 5%;
+// }
+
+// .sidebar-main .container {
+// 	padding: 0;
+// }
+
+// // .sidebar-main label {
+// // 	width: 100%;
+// // 	padding: 10px 0;
+// // 	// font-family: 'Neue Montreal';
+// // 	font-style: normal;
+// // 	font-weight: 400;
+// // 	font-size: 16px;
+// // 	line-height: 26px;
+// // 	display: flex;
+// // 	align-items: center;
+// // 	letter-spacing: -0.5px;
+// // 	color: #202020;
+// // 	text-transform: capitalize
+// // }
+
+// .form-input {
+// 	margin-bottom: 10px;
+// }
+
+// .sidebar-main-footer {
+// 	margin-top: 10%;
+// }
+
+// .form-container .login-option {
+// 	width: 40%;
+// 	float: left;
+// }
+
+// .form-container .button-next {
+// 	width: 50%;
+// 	float: right;
+// 	text-align: right;
+// }
+
+// .form-container .button-next button {
+// 	width: 176px;
+// 	height: 64px;
+// 	border: none;
+// 	background: #454ADE;
+// 	border-radius: 8px;
 // 	// font-family: 'Neue Montreal';
 // 	font-style: normal;
 // 	font-weight: 400;
 // 	font-size: 16px;
 // 	line-height: 26px;
-// 	display: flex;
-// 	align-items: center;
 // 	letter-spacing: -0.5px;
-// 	color: #202020;
-// 	text-transform: capitalize
+// 	color: #F9F6FF;
+
 // }
-
-.form-input {
-	margin-bottom: 10px;
-}
-
-.sidebar-main-footer {
-	margin-top: 10%;
-}
-
-.form-container .login-option {
-	width: 40%;
-	float: left;
-}
-
-.form-container .button-next {
-	width: 50%;
-	float: right;
-	text-align: right;
-}
-
-.form-container .button-next button {
-	width: 176px;
-	height: 64px;
-	border: none;
-	background: #454ADE;
-	border-radius: 8px;
-	// font-family: 'Neue Montreal';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 26px;
-	letter-spacing: -0.5px;
-	color: #F9F6FF;
-
-}
