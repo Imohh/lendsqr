@@ -46,6 +46,7 @@ $font-family_1: 'Work Sans';
             color: $color_2;
             .pull-left {
                padding-right: 10px;
+               background: red;
             }
             &:hover {
                text-decoration: none;

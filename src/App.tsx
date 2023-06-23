@@ -4,9 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Pages/Login'
 import Dashboard from './Pages/Dashboard'
 import Detail from './Pages/Detail'
-import Form from './Pages/Form'
-import Forms from './Pages/Forms'
-import FormParent from './Pages/FormParent'
 
 function App() {
   return (
@@ -17,9 +14,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="dashboard/users/:id" element={<Detail />} />
-        <Route path="/form" element={<Form/>} />
-        <Route path="/forms" element={<Forms/>} />
-        <Route path="/form-parent" element={<FormParent/>} />
       </Routes>
     </BrowserRouter>
   );
