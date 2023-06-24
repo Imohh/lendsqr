@@ -239,21 +239,21 @@ const Dashboard = () => {
 		               		<div className="card">
 		               			<img src={activeUsers} alt="active users" />
 		               			<p className="first-text">active users</p>
-		               			<p className="total">2,453</p>
+		               			<p className="total">45</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={loanUsers} alt="loan users" />
 		               			<p className="first-text">users with loans</p>
-		               			<p className="total">2,453</p>
+		               			<p className="total">63</p>
 		               		</div>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={savingsUsers} alt="savings users"/>
 		               			<p className="first-text">users with savings</p>
-		               			<p className="total">2,453</p>
+		               			<p className="total">30</p>
 		               		</div>
 		               </div>
 		            </div>
