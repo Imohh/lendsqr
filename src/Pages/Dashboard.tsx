@@ -32,8 +32,8 @@ const Dashboard = () => {
 	const [data, setData] = useState<User[]>([])
 	const [loading, setLoading] = useState<boolean>(true);
 	const [searchTerm, setSearchTerm] = useState<string>('');
-  	const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
-  	const [currentPage, setCurrentPage] = useState<number>(1);
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
+ 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [totalPages, setTotalPages] = useState<number>(0);
 	const itemsPerPage = 9; // Number of items to display per page
 	const [filteredData, setFilteredData] = useState<User[]>([]);
@@ -124,11 +124,6 @@ const Dashboard = () => {
 	  };
 
 
-
-
-
-
-
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -199,7 +194,6 @@ const Dashboard = () => {
 
 
 
-
 	return (
 		<HelmetProvider>
 
@@ -224,10 +218,6 @@ const Dashboard = () => {
 		               <div className="col-lg-12">
 		               		<p className="users-text">users</p>
 		               </div>
-
-
-
-
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
 		               			<img src={users} alt="users"/>
