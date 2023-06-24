@@ -40,16 +40,23 @@ $font-family_1: 'Work Sans';
 			}
 		}
 		.back-text {
-			a {
-				font-family: $font-family_1;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 19px;
-				color: $color_2;
-				text-decoration: none;
+		  display: flex;
+		  align-items: center;
+			.back-link {
+			  display: flex;
+			  align-items: center;
+			  font-family: $font-family_1;
+			  font-style: normal;
+			  font-weight: 400;
+			  font-size: 16px;
+			  line-height: 19px;
+			  color: $color_2;
+			  text-decoration: none;
 				.back-arrow {
-					margin-right: 1%
+				  margin-right: 5px;
+				}
+				.back-text-content {
+				  margin-left: 5px;
 				}
 			}
 		}
@@ -325,16 +332,23 @@ $font-family_1: 'Work Sans';
 			}
 		}
 		.back-text {
-			a {
-				font-family: $font-family_1;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 19px;
-				color: $color_2;
-				text-decoration: none;
+		  display: flex;
+		  align-items: center;
+			.back-link {
+			  display: flex;
+			  align-items: center;
+			  font-family: $font-family_1;
+			  font-style: normal;
+			  font-weight: 400;
+			  font-size: 16px;
+			  line-height: 19px;
+			  color: $color_2;
+			  text-decoration: none;
 				.back-arrow {
-					margin-right: 1%
+				  margin-right: 5px;
+				}
+				.back-text-content {
+				  margin-left: 5px;
 				}
 			}
 		}
@@ -610,16 +624,23 @@ $font-family_1: 'Work Sans';
 			}
 		}
 		.back-text {
-			a {
-				font-family: $font-family_1;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 13px;
-				line-height: 19px;
-				color: $color_2;
-				text-decoration: none;
+		  display: flex;
+		  align-items: center;
+			.back-link {
+			  display: flex;
+			  align-items: center;
+			  font-family: $font-family_1;
+			  font-style: normal;
+			  font-weight: 400;
+			  font-size: 16px;
+			  line-height: 19px;
+			  color: $color_2;
+			  text-decoration: none;
 				.back-arrow {
-					margin-right: 1%
+				  margin-right: 5px;
+				}
+				.back-text-content {
+				  margin-left: 5px;
 				}
 			}
 		}
@@ -901,16 +922,23 @@ $font-family_1: 'Work Sans';
 			}
 		}
 		.back-text {
-			a {
-				font-family: $font-family_1;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 13px;
-				line-height: 19px;
-				color: $color_2;
-				text-decoration: none;
+		  display: flex;
+		  align-items: center;
+			.back-link {
+			  display: flex;
+			  align-items: center;
+			  font-family: $font-family_1;
+			  font-style: normal;
+			  font-weight: 400;
+			  font-size: 16px;
+			  line-height: 19px;
+			  color: $color_2;
+			  text-decoration: none;
 				.back-arrow {
-					margin-right: 1%
+				  margin-right: 5px;
+				}
+				.back-text-content {
+				  margin-left: 5px;
 				}
 			}
 		}
@@ -1205,16 +1233,23 @@ $font-family_1: 'Work Sans';
 			}
 		}
 		.back-text {
-			a {
-				font-family: $font-family_1;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 13px;
-				line-height: 19px;
-				color: $color_2;
-				text-decoration: none;
+		  display: flex;
+		  align-items: center;
+			.back-link {
+			  display: flex;
+			  align-items: center;
+			  font-family: $font-family_1;
+			  font-style: normal;
+			  font-weight: 400;
+			  font-size: 16px;
+			  line-height: 19px;
+			  color: $color_2;
+			  text-decoration: none;
 				.back-arrow {
-					margin-right: 1%
+				  margin-right: 5px;
+				}
+				.back-text-content {
+				  margin-left: 5px;
 				}
 			}
 		}

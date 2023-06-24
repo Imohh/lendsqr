@@ -128,7 +128,12 @@ function Detail () {
 		      		<div className="row">
 		      			<div className="col-lg-12 sub-top">
 			      			<button className="sidebar-button" style={{float: "right"}} onClick={toggleSidebar}>Sidebar</button>
-		      				<p className="back-text"><a href="/dashboard"><img src={backArrow} className="back-arrow" alt="back arrow"/>back to users</a></p>
+		      				<p className="back-text">
+		      					<a href="/dashboard" className="back-link">
+		      						<img src={backArrow} className="back-arrow" alt="back arrow"/>
+		      						<span className="back-text-content">back to users</span>
+		      					</a>
+		      				</p>
 		      			</div>
 
 			      			<div className="col-lg-6 user-details detail-ul-padding">
