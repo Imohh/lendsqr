@@ -10,6 +10,8 @@ import savingsUsers from '../images/dashboard/glyph4.png'
 import viewDetail from '../images/dashboard/view-detail.png'
 import activateUser from '../images/dashboard/activate-user.png'
 import blacklistUser from '../images/dashboard/blacklist-user.png'
+import rightarrow from '../images/rightarrow.png'
+import leftarrow from '../images/leftarrow.png'
 import filter from '../images/dashboard/filter.png'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
@@ -180,6 +182,8 @@ const Dashboard = () => {
 
 	const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
+	const pageRangeDisplayed = 3;
+
 
 
 	// filter form
@@ -320,47 +324,47 @@ const Dashboard = () => {
 					{showFilterForm && <DashboardFilterForm data={data} onFilter={handleFilter} />}
 			  	  </section>
 
-
-			  	  
-
 			      <div className="pagination">
-				    <button
-				        onClick={handlePreviousPage}
-				        disabled={currentPage === 1}
-				    >
-			        	Previous
-			      </button>
-			      {pageNumbers.map((pageNumber) => (
-			        <button
-			          key={pageNumber}
-			          onClick={() => setCurrentPage(pageNumber)}
-			          className={pageNumber === currentPage ? "active" : ""}
-			        >
-			          {pageNumber}
-			        </button>
-			      ))}
+					    <button
+					        onClick={handlePreviousPage}
+					        disabled={currentPage === 1}
+					        className="paginate-prev"
+					    >
+				        	<img width="20" height="20" src={leftarrow} alt="back--v1"/>
+				      </button>
+				      {pageNumbers.map((pageNumber) => (
+				        <button
+				          key={pageNumber}
+				          onClick={() => setCurrentPage(pageNumber)}
+				          className={pageNumber === currentPage ? "active" : "non-active"}
+				        >
+				          {pageNumber}
+				        </button>
+				      ))}
 
-			      <button
-			        onClick={handleNextPage}
-			        disabled={currentPage === totalPages}
-			      >
-			        Next
-			      </button>
-			    </div>
+				      <button
+				        onClick={handleNextPage}
+				        disabled={currentPage === totalPages}
+				        className="paginate-prev"
+				      >
+				        <img width="20" height="20" src={rightarrow} alt="back--v1"/>
+				      </button>
+
+				    </div>
 
 
 
-			    {/*filter*/}
+				    {/*filter*/}
 
-			    
-			    <ul>
-			        {filteredData.map((user) => (
-			          <li key={user.id}>{user.orgName}</li>
-			        ))}
-			    </ul>
+				    
+				    <ul>
+				        {filteredData.map((user) => (
+				          <li key={user.id}>{user.orgName}</li>
+				        ))}
+				    </ul>
 
-		      {/*<!-- /#page-content-wrapper -->*/}
-		   	</div>
+			      {/*<!-- /#page-content-wrapper -->*/}
+			   	</div>
 
 		</HelmetProvider>
 	)

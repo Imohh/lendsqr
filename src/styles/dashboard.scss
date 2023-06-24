@@ -548,6 +548,39 @@ $color_3: #213F7D;
 
 
 .pagination {
-  
+  padding-left: 20px;
+}
+
+.paginate-padding {
+  padding-right: 10px;
+}
+
+.paginates-padding {
+  padding-left: 10px;
+}
+
+.non-active {
+  padding: 0 10px;
+}
+
+.paginate-prev {
+  border-radius: 5px;
+  padding: 10px 10px;
+  background: #cad0e1;
+  border: 2px solid #cad0e1;
+  cursor: pointer
+}
+
+.paginate-prev:hover {
+  border: 2px solid #cad0e1;
+  background: transparent;
+  transition: 0.3s
+}
+
+.pagination .active {
+  font-weight: 900;
+  color: $color_2;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
