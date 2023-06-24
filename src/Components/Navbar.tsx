@@ -52,8 +52,8 @@ const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
 								   	onChange={handleChange}
 								/>
 								<button type="submit" className="searchButton">
-							    	<img src={search} />
-							    </button>
+							   	<img src={search} />
+							   </button>
 							</div>
 						</div>
 		      </li>
