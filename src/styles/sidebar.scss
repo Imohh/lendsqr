@@ -46,7 +46,7 @@ $font-family_1: 'Work Sans';
             color: $color_2;
             .pull-left {
                padding-right: 5px;
-               padding-left: 5px;
+               padding-left: 10px;
                float: left
             }
             &:hover {
@@ -172,7 +172,9 @@ $font-family_1: 'Work Sans';
             line-height: 19px;
             color: $color_2;
             .pull-left {
-               padding-right: 10px;
+               padding-right: 5px;
+               padding-left: 10px;
+               float: left
             }
             &:hover {
                text-decoration: none;
@@ -300,7 +302,9 @@ $font-family_1: 'Work Sans';
             line-height: 19px;
             color: $color_2;
             .pull-left {
-               padding-right: 10px;
+               padding-right: 5px;
+               padding-left: 10px;
+               float: left
             }
             &:hover {
                text-decoration: none;
@@ -425,7 +429,9 @@ $font-family_1: 'Work Sans';
             line-height: 19px;
             color: $color_2;
             .pull-left {
-               padding-right: 10px;
+               padding-right: 5px;
+               padding-left: 10px;
+               float: left
             }
             &:hover {
                text-decoration: none;
@@ -551,7 +557,9 @@ $font-family_1: 'Work Sans';
             line-height: 19px;
             color: $color_2;
             .pull-left {
-               padding-right: 10px;
+               padding-right: 5px;
+               padding-left: 10px;
+               float: left
             }
             &:hover {
                text-decoration: none;
