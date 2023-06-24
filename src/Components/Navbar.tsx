@@ -58,30 +58,37 @@ const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
 						</div>
 		      </li>
 		    </ul>
-		    <div className="nav-right form-inline my-2 my-lg-0">
+		    <div className="nav-right form-inline my-4 my-lg-0">
 		      <ul className="navbar-nav mr-auto">
 						<li className="nav-item docs"><a href="">docs</a></li>
-					    <li className="nav-item notification"><img src={notification} /></li>
+					  <li className="nav-item notification"><img src={notification} /></li>
 
 						<li className="dropdown nav-item nav-name">
-							<a className=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    <span><img src={image} /></span> ayodeji
-							</a>
-
-							<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<li><a className="dropdown-item" href="#">Action</a></li>
-								<li><a className="dropdown-item" href="#">Another action</a></li>
-							    <li><a className="dropdown-item" href="#">Something else here</a></li>
-							</ul>
+					    <div style={{display: "flex", alignItems: "center"}}>
+						    <span><img style={{float: "left"}} src={image} /></span>
+						    <span className="firstname" style={{marginLeft: "10px"}}>ayodeji</span>
+						  </div>
 						</li>
 			  	</ul>
 		    </div>
 		  </div>
 		</nav>
 
-		{show && <nav>
-			<h2>this is the mobile nav</h2>
-		</nav>}
+		{show && 
+			<nav className="mobile-nav">
+				<ul className="navbar-nav mr-auto">
+					<li className="nav-item docs"><a href="">docs</a></li>
+				  <li className="nav-item notification"><img src={notification} /></li>
+
+					<li className="dropdown nav-item nav-name">
+						<div style={{display: "flex", alignItems: "center"}}>
+						  <span><img style={{float: "left"}} src={image} /></span>
+						  <span className="firstname" style={{marginLeft: "10px"}}>ayodeji</span>
+						</div>
+					</li>
+			  </ul>
+			</nav>
+		}
 
 
 

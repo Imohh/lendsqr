@@ -11,7 +11,10 @@ $color_2: #00B4CC;
 $color_3: #fff;
 $color_4: #000;
 
-
+  .firstname {
+    color: #213F7D;
+    text-transform: capitalize
+  }
   .navbar {
     padding: 20px;
     background: #FFFFFF;
@@ -126,10 +129,12 @@ $color_4: #000;
 
 
 @media(max-width: 991px) {
+  .nav-right {
+    display: none
+  }
+
   .search {
-    /*width: 100%;
-    position: relative;
-    display: flex;*/
+    display: none
   }
   .searchTerm {
     width: 70%;
@@ -162,24 +167,6 @@ $color_4: #000;
     left: 40%;
     transform: translate(-50%, -50%);*/
   }
-  .nav-right {
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      li {
-        display: inline;
-        padding-left: 10px;
-        float: left;
-        span {
-          img {
-            border-radius: 50%;
-          }
-        }
-      }
-    }
-  }
 }/*media query closing tag*/
 
 
@@ -189,4 +176,18 @@ $color_4: #000;
   .wrap {
     display: none
   }
+}
+
+.mobile-nav {
+  ul {
+    margin: 0 auto;
+    li {
+      padding-top: 20px;
+      text-align: center;
+      margin: 0 auto
+    }
+  }
+}
+.mobile-nav img {
+  border-radius: 50%;
 }
