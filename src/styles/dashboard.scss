@@ -381,6 +381,7 @@ $color_3: #213F7D;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
     padding: 20px 30px 30px 30px;
+    margin-bottom: 20px;
     img {
       width: 20%;
       left: 382px;
@@ -405,6 +406,54 @@ $color_3: #213F7D;
       text-transform: uppercase;
       color: $color_3;
     }
+  }
+
+  .sidebar-buttons{
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  #wrapper.toggled {
+    padding-left: 0;
+    #sidebar-wrapper {
+      width: 250px;
+    }
+    #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+      padding-left: 250px;
+    }
+  }
+  #sidebar-wrapper {
+    width: 250px;
+    position: absolute
+  }
+  #wrapper.toggled-2 {
+    #sidebar-wrapper {
+      width: 50px;
+      &:hover {
+        width: 250px;
+      }
+    }
+    #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+      margin-left: -200px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      width: auto;
+    }
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 }
 

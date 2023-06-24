@@ -98,8 +98,7 @@ function Detail () {
 
 
 
-  // hide amd show side bar
-
+  // hide and show side bar
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };

@@ -196,6 +196,10 @@ const Dashboard = () => {
 	    setShowFilterForm(!showFilterForm);
 	};
 
+	// hide and show side bar
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
 
 
 	return (
@@ -220,7 +224,9 @@ const Dashboard = () => {
 		         <div className="container xyz">
 		            <div className="row">
 		               <div className="col-lg-12">
-		               		<p className="users-text">users</p>
+			               		<p className="users-text" style={{float: "left", width: "50%"}}>users</p>
+
+			               		<button className="sidebar-buttons" onClick={toggleSidebar}>Sidebar</button>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
