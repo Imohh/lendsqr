@@ -212,8 +212,9 @@ const Dashboard = () => {
 	    	</Helmet>
 
 	    	
-			<Navbar onSearch={handleSearch}
-				showSearch={shouldShowSearch}
+			<Navbar 
+				onSearch={handleSearch}
+				showSearchBar={true}
 			/>
 		   	<div id="wrapper">
 		      {sidebarVisible && <Sidebar/>}

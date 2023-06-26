@@ -115,7 +115,7 @@ function Detail () {
 
 			<Navbar 
 				onSearch={handleSearch}
-				showSearch={shouldShowSearch} 
+				showSearchBar={false}
 			/>
 		   	<div id="wrapper" className="wrap-content">
 

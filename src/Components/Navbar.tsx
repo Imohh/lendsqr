@@ -9,18 +9,20 @@ import image from '../images/dashboard/image.png'
 
 interface SearchProps {
   onSearch: (term: string) => void;
-  showSearch: boolean;
+  showSearchBar: boolean;
 }
 
 
 
-const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
+const Navbar: React.FC<SearchProps> = ({ onSearch, showSearchBar }) => {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		onSearch(event.target.value);
 	};
 
-	const [show, setShow] = useState(false)
+	const [show, setShow] = useState(false);
+	const [showSearch, setShowSearch] = useState(true)
+
 	const handleToggleVisibility = () => {
     setShow(!show);
   };
@@ -44,6 +46,7 @@ const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
 		      <li className="nav-item active">
 		       
 		        <div className="wrap">
+		        {showSearchBar &&
 							<div className="search">
 							    <input 
 								    type="text" 
@@ -55,6 +58,7 @@ const Navbar: React.FC<SearchProps> = ({ onSearch, showSearch }) => {
 							   	<img src={search} />
 							   </button>
 							</div>
+						}
 						</div>
 		      </li>
 		    </ul>
