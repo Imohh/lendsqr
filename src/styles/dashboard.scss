@@ -67,7 +67,7 @@ $color_3: #213F7D;
 
 
 .table {
-  background: green;
+  width: 100%;
   padding: 10%;
   margin: 2% 10% 0 2%;
   background: #FFFFFF;
@@ -108,6 +108,21 @@ $color_3: #213F7D;
   padding-right: 4%;
   padding-bottom: 5%;
 }
+
+
+
+// RESPONSIVE TABLE NEW CODE
+
+
+
+
+
+
+
+
+
+
+
 .test {
   &:after {
     content: '\2807';
@@ -336,43 +351,61 @@ $color_3: #213F7D;
 
 
 /*media query*/
-@media (max-width: 600px) {
-  .card {
+
+
+@media (min-width: 601px) and (max-width: 767px) {
+    .table {
     width: 100%;
-    height: 160px;
-    background: #FFFFFF;
-    border: 1px solid rgba(33, 63, 125, 0.06);
+    padding: 10%;
+    margin: 2% 10% 0 2%;
+    background: #fff;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
-    padding: 20px 30px 30px 30px;
-    img {
-      width: 20%;
-      left: 382px;
-      top: 257px;
-    }
-    .first-text {
-      font-family: 'Work Sans';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 16px;
-      text-transform: uppercase;
-      padding: 20px 0 0 0;
-      color: $color_2;
-    }
-    .total {
+    display: block;
+  thead {
+    padding: 14px 0 7px;
+    display: block;
+    >th {
       font-family: 'Work Sans';
       font-style: normal;
       font-weight: 600;
-      font-size: 24px;
-      line-height: 28px;
+      font-size: 12px;
+      line-height: 14px;
+      align-items: flex-end;
       text-transform: uppercase;
-      color: $color_3;
+      color: $color_2;
+      cursor: pointer;
+      padding: 2px 16px;
+      display: block;
+      // width: 16.5%;
+    }
+  }
+  tbody {
+    display: block;
+    > tr {
+        display: block;
+      > td {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: capitalize;
+        padding: 2%;
+        color: $color_2;
+        display: block;
+      }
     }
   }
 }
+.table-section {
+  padding-right: 4%;
+  padding-bottom: 5%;
+}
 
-@media (min-width: 601px) and (max-width: 767px) {
+
+
+
   .card {
     width: 100%;
     height: 170px;
@@ -457,10 +490,60 @@ $color_3: #213F7D;
   }
 }
 
-@media (min-width: 768px) {
-  sidebar-buttons {
-    display: none
+@media (min-width: 1044px) {
+  .sidebar-buttons {
+    display: none;
   }
+}
+
+@media (min-width: 768px) and (max-width: 1043px ) {
+  #wrapper {
+
+  }
+
+  #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+    margin-left: -250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: auto;
+  }
+
+  .sidebar-buttons {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .table-section {
+    margin-left: -250px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
   #wrapper {
     padding-left: 250px;
   }
@@ -512,9 +595,7 @@ $color_3: #213F7D;
 
 
 @media (min-width: 768px) and (max-width: 1417px) {
-  .sidebar-buttons {
-    display: none
-  }
+
   .xyz {
     min-width: 360px;
   }
@@ -595,6 +676,59 @@ $color_3: #213F7D;
 
 
 @media (max-width: 600px) {
+  .table {
+    width: 100%;
+    padding: 10%;
+    margin: 2% 10% 0 2%;
+    background: #fff;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    display: block;
+  thead {
+    padding: 14px 0 7px;
+    display: block;
+    >th {
+      font-family: 'Work Sans';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      align-items: flex-end;
+      text-transform: uppercase;
+      color: $color_2;
+      cursor: pointer;
+      padding: 2px 16px;
+      display: block;
+      // width: 16.5%;
+    }
+  }
+  tbody {
+    display: block;
+    > tr {
+        display: block;
+      > td {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: capitalize;
+        padding: 2%;
+        color: $color_2;
+        display: block;
+      }
+    }
+  }
+}
+.table-section {
+  padding-right: 4%;
+  padding-bottom: 5%;
+}
+
+
+
+
+  
   .card {
     height: 200px;
     background: #FFFFFF;
@@ -676,6 +810,16 @@ $color_3: #213F7D;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
+
+
+
+
+
+  // RESPONSIVE TABLE
+
+
+
+
 }
 
 

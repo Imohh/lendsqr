@@ -226,7 +226,7 @@ const Dashboard = () => {
 		               <div className="col-lg-12">
 			               		<p className="users-text" style={{float: "left", width: "50%"}}>users</p>
 
-			               		<button className="sidebar-buttons" onClick={toggleSidebar}>Sidebar</button>
+			               		<button className="sidebar-buttons" style={{float: "right"}} onClick={toggleSidebar}>Sidebar</button>
 		               </div>
 		               <div className="col-lg-3 col-md-6 col-sm-6">
 		               		<div className="card">
@@ -266,7 +266,7 @@ const Dashboard = () => {
 				       	<div>Loading...</div> // Render the loader when loading is true
 				   	) : (
 				    <table className="table">
-					  <thead>
+					  	<thead>
 					      <th onClick={toggleFilterForm} scope="col">organization<img src={filter} alt="filter" /></th>
 					      <th onClick={toggleFilterForm} scope="col">username<img src={filter} alt="filter" /></th>
 					      <th onClick={toggleFilterForm} scope="col">email<img src={filter} alt="filter" /></th>
@@ -274,7 +274,7 @@ const Dashboard = () => {
 					      <th onClick={toggleFilterForm} scope="col">date joined<img src={filter} alt="filter" /></th>
 					      <th onClick={toggleFilterForm} scope="col">status<img src={filter} alt="filter" /></th>
 					      <th></th>
-					  </thead>
+					  	</thead>
 
 					  {paginateData(filteredUsers).map((item, index) => {
 	        			return (
@@ -297,28 +297,28 @@ const Dashboard = () => {
 						      <td>
 
 						      	<div id="container">
-								    <div id="menu-wrap">
-								      <input type="checkbox" className="toggler" />
-								      <div className="dots">
-								        <div></div>
-								      </div>
-								      <div className="menu">
-								        <div>
-								          <ul>
-								            <li>
-									            <Link data-item-id={item.id} to={`/dashboard/users/${item.id}`} key={item.id}>
-								            		<a href="#" className="link">
-										            	<img src={viewDetail} alt="view detail"/>view details
-										            </a>
-									            </Link>
-										    </li>
-								            <li><a href="#" className="link"><img src={blacklistUser} alt="blacklist user"/>blacklist user</a></li>
-								            <li><a href="#" className="link"><img src={activateUser} alt="activate user" />activate user</a></li>
-								          </ul>
-								        </div>
-								      </div>
-								    </div>
-								</div>
+									    <div id="menu-wrap">
+									      <input type="checkbox" className="toggler" />
+									      <div className="dots">
+									        <div></div>
+									      </div>
+										      <div className="menu">
+										        <div>
+										          <ul>
+										            <li>
+											            <Link data-item-id={item.id} to={`/dashboard/users/${item.id}`} key={item.id}>
+										            		<a href="#" className="link">
+												            	<img src={viewDetail} alt="view detail"/>view details
+												            </a>
+											            </Link>
+												    		</li>
+										            <li><a href="#" className="link"><img src={blacklistUser} alt="blacklist user"/>blacklist user</a></li>
+										            <li><a href="#" className="link"><img src={activateUser} alt="activate user" />activate user</a></li>
+										          </ul>
+										        </div>
+										      </div>
+									    </div>
+										</div>
 
 						      </td>				      
 						  	</tr>
